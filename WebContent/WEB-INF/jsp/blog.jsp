@@ -8,5 +8,13 @@
 </head>
 <body>
 	<h1>我的博客</h1>
+	<div>
+		<div id="sidebar">
+			
+		</div>
+		<div id="blogs">
+		
+		</div>
+	</div>
 </body>
 </html>
