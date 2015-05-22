@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gxf.beans">
+
+	<class name="com.gxf.beans.Blog" table="blog">
+		<id name="id" type="integer">
+			<column name="id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="title" type="string">
+			<column name="title" length="100"/>
+		</property>
+		<property name="author" type="string">
+			<column name="author" />
+		</property>
+		<property name="publishTime" type="timestamp">
+			<column name="publishTime" />
+		</property>
+		<property name="content" type="string">
+			<column name="content" />
+		</property>
+		<property name="tags" type="string">
+			<column name="tags" />
+		</property>
+		<list name="comments" table="comment" inverse="false" cascade="delete" lazy="false" fetch="join">
+			<key>
+				<column name="id"/>
+			</key>
+			<index column="publishTime"/>
+			<one-to-many class="com.gxf.beans.Comment"/>
+		</list>
+	</class>
+
+</hibernate-mapping>

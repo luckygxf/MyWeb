@@ -10,6 +10,7 @@
 	<style type="text/css">
 		body{
 			text-align: center;
+
 		}
 		#main{
 			width: 1000px;
@@ -62,7 +63,7 @@
 		<div id = "header">
 			<div id="logo" style="background-image:url(image/topImage.jpg);height: 200">
 			</div>
-			<div id = "nav">
+			<div id="nav">
 				<ul>
 					<li><a href="main/mainAction" target="pageContent">首页 </a>| </li>
 					<li><a href="blog/blogAction" target="pageContent">博客 </a>| </li>
