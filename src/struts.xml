@@ -11,5 +11,69 @@
         </action>
 
     </package>
-
+    <!-- main页面对应的action -->
+    <package name="main" namespace="/main" extends="struts-default">
+    	<action name = "mainAction" class = "com.gxf.main.MainAction" method = "main">
+    		<result name="success">/WEB-INF/jsp/main.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    
+    <!-- blog对应的action -->
+	<package name="blog" namespace="/blog" extends="struts-default">
+    	<action name = "blogAction" class = "com.gxf.blog.BlogAction" method = "getAllBlogs">
+    		<result name="success">/WEB-INF/jsp/blog.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    
+    <!-- Picture对应的action -->
+    <package name="picture" namespace="/picture" extends="struts-default">
+    	<action name = "pictureAction" class = "com.gxf.picture.PictureAction" method = "getAllPicture">
+    		<result name="success">/WEB-INF/jsp/picture.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    <!-- resource对应的action -->
+    <package name="resource" namespace="/resource" extends="struts-default">
+    	<action name = "resourceAction" class = "com.gxf.resource.ResourceAction" method = "getAllResource">
+    		<result name="success">/WEB-INF/jsp/resource.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    <!-- book对应的action -->
+    <package name="book" namespace="/book" extends="struts-default">
+    	<action name = "bookAction" class = "com.gxf.book.BookAction" method = "getAllBook">
+    		<result name="success">/WEB-INF/jsp/resource.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    <!-- collection对应的action -->
+    <package name="collection" namespace="/collection" extends="struts-default">
+    	<action name = "collectionAction" class = "com.gxf.collection.CollectionAction" method = "getAllCollection">
+    		<result name="success">/WEB-INF/jsp/collection.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    <!-- travel对应的action -->
+    <package name="travel" namespace="/travel" extends="struts-default">
+    	<action name = "travelAction" class = "com.gxf.travel.TravelAction" method = "init">
+    		<result name="success">/WEB-INF/jsp/travel.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    <!-- message对应的action -->
+    <package name="message" namespace="/message" extends="struts-default">
+    	<action name = "messageAction" class = "com.gxf.message.MessageAction" method = "getAllMessage">
+    		<result name="success">/WEB-INF/jsp/message.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
+    <!-- about对应的action -->
+    <package name="about" namespace="/about" extends="struts-default">
+    	<action name = "aboutAction" class = "com.gxf.about.AboutAction" method = "init">
+    		<result name="success">/WEB-INF/jsp/aboutMe.jsp</result>
+            <result name="input">/login.jsp</result>
+    	</action>
+    </package>
 </struts>
