@@ -18,6 +18,14 @@ public class Blog {
 	private Timestamp publishTime;
 	private String content;
 	private String tags;
+	private String type;
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 	private List<Comment> comments = new ArrayList<Comment>();
 	
 	public Blog(){

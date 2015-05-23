@@ -22,6 +22,9 @@
 		<property name="content" type="string">
 			<column name="content" />
 		</property>
+		<property name="type" type="string">
+			<column name="type" />
+		</property>
 		<property name="tags" type="string">
 			<column name="tags" />
 		</property>

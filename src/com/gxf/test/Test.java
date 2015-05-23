@@ -15,11 +15,13 @@ public class Test {
 			String content = "博客内容" + i;
 			String author = "作者" + i;
 			String tags = "标签" + i;
+			String type = "种类";
 			
 			blog.setTitle(title);
 			blog.setAuthor(author);
 			blog.setContent(content);
 			blog.setTags(tags);
+			blog.setType(type);
 			blogDao.addBlog(blog);
 		}
 	}

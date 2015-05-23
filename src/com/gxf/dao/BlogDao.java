@@ -1,5 +1,7 @@
 package com.gxf.dao;
 
+import java.util.List;
+
 import com.gxf.beans.Blog;
 
 /**
@@ -14,4 +16,10 @@ public interface BlogDao {
 	 * @param blog
 	 */
 	public void addBlog(Blog blog);
+	
+	/**
+	 * 查询所有的博客
+	 * @return
+	 */
+	public List<Blog> queryAllBlog();
 }
