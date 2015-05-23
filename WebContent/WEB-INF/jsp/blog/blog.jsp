@@ -33,7 +33,7 @@
 		list-style: none;
 	}
 	#page{
-		text-align: right;
+		text-align: center;
 	}
 </style>
 <title>我的博客</title>
@@ -59,7 +59,7 @@
 				<ul>
 				<s:iterator value="listOfBlog" id="val">
 					<li>
-						<h3><a href="#"><s:property value="#val.title"/></a></h3>
+						<h3><a href="blog/queryBlogDetailAction?blog.id=<s:property value="#val.id"/>" target="pageContent"><s:property value="#val.title"/></a></h3>
 						<span><s:property value="#val.publishTime"/></span>
 						<span>阅读(<s:property value="#val.readCount"/>)</span>
 						<span>评论(0)</span>

@@ -30,4 +30,11 @@ public interface BlogDao {
 	 * @return
 	 */
 	public List<Blog> queryBlog(Pager pager);
+	
+	/**
+	 * 根据id查询博客内容
+	 * @param id
+	 * @return
+	 */
+	public Blog queryBlogById(int id);
 }

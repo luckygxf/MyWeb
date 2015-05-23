@@ -121,4 +121,21 @@ public class BlogDaoImp implements BlogDao {
 		return sum;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.gxf.dao.BlogDao#queryBlogById(int)
+	 */
+	@Override
+	public Blog queryBlogById(int id) {
+		Session session = baseDao.getSession();
+		session.beginTransaction();
+		
+		Blog blog = (Blog) session.get(Blog.class, id);
+		
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		return blog;
+	}
+
 }
