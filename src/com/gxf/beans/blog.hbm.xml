@@ -25,12 +25,15 @@
 		<property name="type" type="string">
 			<column name="type" />
 		</property>
+		<property name="readCount" type="integer">
+			<column name="readCount" />
+		</property>
 		<property name="tags" type="string">
 			<column name="tags" />
 		</property>
 		<list name="comments" table="comment" inverse="false" cascade="delete" lazy="false" fetch="join">
 			<key>
-				<column name="id"/>
+				<column name="blogId"/>
 			</key>
 			<index column="publishTime"/>
 			<one-to-many class="com.gxf.beans.Comment"/>

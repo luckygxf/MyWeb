@@ -3,6 +3,7 @@ package com.gxf.dao;
 import java.util.List;
 
 import com.gxf.beans.Blog;
+import com.gxf.util.Pager;
 
 /**
  * 对博客表操作
@@ -22,4 +23,11 @@ public interface BlogDao {
 	 * @return
 	 */
 	public List<Blog> queryAllBlog();
+	
+	/**
+	 * 进行分页查询
+	 * @param pager
+	 * @return
+	 */
+	public List<Blog> queryBlog(Pager pager);
 }

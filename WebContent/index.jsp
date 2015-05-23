@@ -79,7 +79,7 @@
 		</div>
 		<!-- 主要内容 -->
 		<div id = "content">
-			<iframe name="pageContent"  style="width: 1000px; height: 500px; border: none;">
+			<iframe name="pageContent"  style="width: 1000px; height: 530px; border: none;">
 			
 			</iframe>
 		</div>

@@ -19,6 +19,16 @@ public class Blog {
 	private String content;
 	private String tags;
 	private String type;
+	private int readCount;
+	private List<Comment> comments = new ArrayList<Comment>();
+	public int getReadCount() {
+		return readCount;
+	}
+
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
+
 	public String getType() {
 		return type;
 	}
@@ -26,7 +36,7 @@ public class Blog {
 	public void setType(String type) {
 		this.type = type;
 	}
-	private List<Comment> comments = new ArrayList<Comment>();
+
 	
 	public Blog(){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
