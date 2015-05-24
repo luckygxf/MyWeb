@@ -72,6 +72,32 @@ public class BlogAction extends ActionSupport{
 		Tag selectedTag = tagDao.queryTagByContent(selectedTagContent);
 		//这里需要进行分页处理
 		listOfBlog = new ArrayList<Blog>(selectedTag.getBlogs());
+		//分页处理
+		int blogCount = listOfBlog.size();
+		if(pager == null) 
+		{
+			pager = new Pager();
+		}
+		
+		//设置有多少页
+		int pageSize = pager.getPageSize();
+		if(blogCount % pageSize != 0)
+			pager.setPageCount(blogCount / pageSize + 1);
+		else
+			pager.setPageCount(blogCount / pageSize);
+		
+		//计算从第几条记录开始
+		int startIndex = pager.getNowPage()  * pager.getPageSize();
+		if(startIndex >= blogCount)
+			pager.setNowPage(pager.getPageCount() - 1);
+		startIndex = pager.getNowPage()  * pager.getPageSize();
+		
+		//最后一页内容没有pageSize
+		if(blogCount < (startIndex + pageSize))
+			pageSize = blogCount - startIndex;
+		
+		listOfBlog = listOfBlog.subList(startIndex, pageSize);
+		
 		
 		return SUCCESS;
 		

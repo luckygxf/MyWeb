@@ -38,8 +38,13 @@
 				</s:iterator>
 			</p>
 		</div>
-		<div class="comment">
-			评论
+		<h1>发表评论</h1>
+		<div class="postComment">
+			<form action="#">
+				<table>
+				
+				</table>
+			</form>
 		</div>
 	</div>
 </body>
