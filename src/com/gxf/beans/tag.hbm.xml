@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gxf.beans">
+
+	<class name="com.gxf.beans.Tag" table="tag">
+		<id name="id" type="integer">
+			<column name="id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="content" type="string">
+			<column name="content" length="20"/>
+		</property>		
+		<set name="blogs" table="blogtag" cascade="all" lazy="false" inverse="false">
+			<key column="tagId"/>
+			<many-to-many class="com.gxf.beans.Blog" column="blogId"/> 
+		</set>
+	</class>
+
+</hibernate-mapping>

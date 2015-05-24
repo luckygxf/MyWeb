@@ -35,6 +35,30 @@
 	#page{
 		text-align: center;
 	}
+	
+	.artlist ul{
+	margin:5px 25px;
+	}
+	.artlist ul li{
+		margin:10px;
+		height:45px;
+		border-bottom:1px dashed #839b2e;
+	}
+	.artlist span{
+		font-size:12px;
+		margin-right:5px;
+		color:#888;
+	}
+	.artlist h3{
+		color:#839b2e;
+		margin-bottom:5px;
+	}
+	
+	ul li a{
+		 font-size:20px;
+		 text-decoration: none;
+		 font-weight: bold;
+	}
 </style>
 <title>我的博客</title>
 </head>
@@ -55,7 +79,7 @@
 		</div>
 		<div id="blogs">
 		<!-- 博客列表 -->
-			<div id="artist">
+			<div class="artlist">
 				<ul>
 				<s:iterator value="listOfBlog" id="val">
 					<li>

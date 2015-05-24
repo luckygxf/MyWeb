@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * ²©¿Í
@@ -17,10 +18,12 @@ public class Blog {
 	private String author;
 	private Timestamp publishTime;
 	private String content;
-	private String tags;
 	private String type;
 	private int readCount;
 	private List<Comment> comments = new ArrayList<Comment>();
+	private Set<Tag> tags;
+	private String tagSelected;
+
 	public int getReadCount() {
 		return readCount;
 	}
@@ -72,14 +75,16 @@ public class Blog {
 	public String getContent() {
 		return content;
 	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getTags() {
+	public Set<Tag> getTags() {
 		return tags;
 	}
-	public void setTags(String tags) {
+
+	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public List<Comment> getComments() {
 		return comments;

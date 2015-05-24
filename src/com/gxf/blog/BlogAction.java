@@ -1,11 +1,16 @@
 package com.gxf.blog;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.gxf.beans.Blog;
+import com.gxf.beans.Tag;
 import com.gxf.dao.BlogDao;
+import com.gxf.dao.TagDao;
 import com.gxf.dao.impl.BlogDaoImp;
+import com.gxf.dao.impl.TagDaoImp;
 import com.gxf.util.Pager;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,11 +22,13 @@ public class BlogAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	//数据库访问类
 	private BlogDao blogDao = new BlogDaoImp();
+	private TagDao tagDao = new TagDaoImp();
+	
 	private List<Blog> listOfBlog;
 	private Pager pager;
 	private Blog blog;
-	private List<String> tags = new ArrayList<String>();	
-
+	private List<Tag> tags = new ArrayList<Tag>();	
+	private String selectedTagContent;
 	
 
 	/**
@@ -35,7 +42,6 @@ public class BlogAction extends ActionSupport{
 		if(listOfBlog == null)
 			listOfBlog = blogDao.queryBlog(pager);	
 		
-		
 		return SUCCESS;
 	}
 	
@@ -47,14 +53,36 @@ public class BlogAction extends ActionSupport{
 		int blogId = blog.getId();
 		blog = blogDao.queryBlogById(blogId);
 		
-		//处理标签
-		String arrayOfTag[] = blog.getTags().split(" ");
-		for(int i = 0; i < arrayOfTag.length; i++)
-			tags.add(arrayOfTag[i]);
+		//处理标签	
+		tags.addAll(blog.getTags());
 				
 		return SUCCESS;
 	}
 	
+	/**
+	 * 通过tag获取博客
+	 * @return
+	 */
+	public String queryBlogByTag(){
+		try {
+			selectedTagContent = new String(selectedTagContent.getBytes("ISO8859_1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		Tag selectedTag = tagDao.queryTagByContent(selectedTagContent);
+		//这里需要进行分页处理
+		listOfBlog = new ArrayList<Blog>(selectedTag.getBlogs());
+		
+		return SUCCESS;
+		
+	}
+	
+	/**
+	 * 对博客进行分页
+	 */
+	public void getBlogByPage(){
+		
+	}
 
 	public List<Blog> getListOfBlog() {
 		return listOfBlog;
@@ -64,13 +92,17 @@ public class BlogAction extends ActionSupport{
 		this.listOfBlog = listOfBlog;
 	}
 
-
-
 	public Pager getPager() {
 		return pager;
 	}
+	
+	public String getSelectedTagContent() {
+		return selectedTagContent;
+	}
 
-
+	public void setSelectedTagContent(String selectedTagContent) {
+		this.selectedTagContent = selectedTagContent;
+	}
 
 	public void setPager(Pager pager) {
 		this.pager = pager;
@@ -83,11 +115,11 @@ public class BlogAction extends ActionSupport{
 		this.blog = blog;
 	}
 	
-	public List<String> getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<String> tags) {
+	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
 }

@@ -28,10 +28,11 @@
 		<property name="readCount" type="integer">
 			<column name="readCount" />
 		</property>
-		<property name="tags" type="string">
-			<column name="tags" />
-		</property>
-		<list name="comments" table="comment" inverse="false" cascade="delete" lazy="false" fetch="join">
+		<set name="tags" table="blogtag" cascade="all" lazy="false" inverse="false">
+			<key column="blogId"/>
+			<many-to-many class="com.gxf.beans.Tag" column="tagId"/>
+		</set>
+		<list name="comments" table="comment" inverse="false" cascade="all" lazy="false" fetch="join">
 			<key>
 				<column name="blogId"/>
 			</key>

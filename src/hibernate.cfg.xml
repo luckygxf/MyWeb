@@ -38,6 +38,7 @@
 		<mapping resource="com/gxf/beans/blog.hbm.xml"/>
 		<mapping resource="com/gxf/beans/comment.hbm.xml"/>
 		<mapping resource="com/gxf/beans/user.hbm.xml"/>
+		<mapping resource="com/gxf/beans/tag.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>
