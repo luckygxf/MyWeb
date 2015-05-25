@@ -1,4 +1,10 @@
 //弄清楚，原理！
 
-1.分页做好
-2.ognl %#{} 
+<result name="success" type="stream">
+ 5             <param name="contentType">image/jpeg</param>
+ 6             <param name="inputName">imageStream</param>
+ 7             <param name="bufferSize">2048</param>
+ 8         </result>
+
+
+1.中午测试snmp应用程序

@@ -22,7 +22,6 @@ public class Blog {
 	private int readCount;
 	private List<Comment> comments = new ArrayList<Comment>();
 	private Set<Tag> tags;
-	private String tagSelected;
 
 	public int getReadCount() {
 		return readCount;

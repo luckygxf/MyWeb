@@ -1,17 +1,20 @@
 package com.gxf.blog;
 
+import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.gxf.beans.Blog;
+import com.gxf.beans.Comment;
 import com.gxf.beans.Tag;
 import com.gxf.dao.BlogDao;
 import com.gxf.dao.TagDao;
 import com.gxf.dao.impl.BlogDaoImp;
 import com.gxf.dao.impl.TagDaoImp;
 import com.gxf.util.Pager;
+import com.gxf.util.SecurityCode;
+import com.gxf.util.SecurityImage;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BlogAction extends ActionSupport{
@@ -29,6 +32,12 @@ public class BlogAction extends ActionSupport{
 	private Blog blog;
 	private List<Tag> tags = new ArrayList<Tag>();	
 	private String selectedTagContent;
+	private Comment comment;
+	
+	private ByteArrayInputStream imageStream;
+	
+
+
 	
 
 	/**
@@ -55,6 +64,7 @@ public class BlogAction extends ActionSupport{
 		
 		//处理标签	
 		tags.addAll(blog.getTags());
+		
 				
 		return SUCCESS;
 	}
@@ -104,6 +114,18 @@ public class BlogAction extends ActionSupport{
 	}
 	
 	/**
+	 * 生成校验码
+	 * @return
+	 */
+	public String createSecurityCodeImageAction(){
+		//获取默认难度和长度的验证码
+		String securityCode = SecurityCode.getSecurityCode();
+		imageStream = SecurityImage.getImageAsInputStream(securityCode);
+		
+		return SUCCESS;
+	}
+	
+	/**
 	 * 对博客进行分页
 	 */
 	public void getBlogByPage(){
@@ -147,5 +169,19 @@ public class BlogAction extends ActionSupport{
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+	public ByteArrayInputStream getImageStream() {
+		return imageStream;
+	}
+
+	public void setImageStream(ByteArrayInputStream imageStream) {
+		this.imageStream = imageStream;
 	}
 }

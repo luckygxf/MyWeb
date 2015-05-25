@@ -29,6 +29,14 @@
     		<result name="success">/WEB-INF/jsp/blog/blog.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
+    	<action name = "createCodeImage" class = "com.gxf.blog.BlogAction" method = "createSecurityCodeImageAction">
+    		<result name="success" type="stream">
+	    		<param name="contentType">image/jpeg</param>
+	            <param name="inputName">imageStream</param>
+	            <param name="bufferSize">2048</param>
+    		</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
     </package>
     
     <!-- Picture对应的action -->

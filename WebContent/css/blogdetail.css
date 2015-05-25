@@ -67,3 +67,18 @@
 		color:#FFFFFF; 
 		text-decoration: none; 
 	} 
+	.starSymbol{
+		margin:5px;
+		color:red;
+	}
+	.content .postComment tr{
+	    height:22px;
+	}	
+	.content .postComment input{
+    	height:20px;
+	}
+	.content .postComment textarea{
+		width:400px;
+		height:80px;
+		font-size:12px;
+	}

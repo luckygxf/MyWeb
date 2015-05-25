@@ -8,6 +8,15 @@
 <title>我的博客</title>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/MyWeb/css/blogdetail.css">
+<script type="text/javascript">
+	window.onload=function(){
+	    var verifyObj = document.getElementById("verifyCodeImage");
+	    verifyObj.onclick=function(){
+	        //this.src="SecurityCodeImageAction?timestamp="+new Date().getTime();
+	        this.src="blog/createCodeImage";
+	    };
+	}
+</script>
 </head>
 <body>
 	<div id="sidebar">
@@ -42,7 +51,45 @@
 		<div class="postComment">
 			<form action="#">
 				<table>
-				
+					<tr>
+						<td>博客：</td>
+						<td><s:property value="blog.title"/></td>
+					</tr>
+					<tr>
+						<td>留言人：</td>
+						<td>
+							<input name="comment.personName"/>
+							<span class="starSymbol">*</span>
+						</td>
+					</tr>
+					<tr>
+						<td>电子邮箱：</td>
+						<td>
+							<input name="comment.personEmail"/>
+							<span class="starSymbol">*</span>
+						</td>
+					</tr>
+					<tr>
+						<td>评论内容：</td>
+						<td>
+							<textarea name="comment.content"></textarea>
+							<span class="starSymbol">*</span>
+						</td>
+					</tr>
+					<tr>
+						<td>验证码：</td>
+						<td>
+							<input name="verifyCode"/>
+							<img id="verifyCodeImage" alt="看不清，换一张" src="createCodeImage" style="vertical-align: middle;
+							 argin-bottom: 3px; cursor: pointer">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="submit" value="提交"/>
+						</td>
+					</tr>
 				</table>
 			</form>
 		</div>
