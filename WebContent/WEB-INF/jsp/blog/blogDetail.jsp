@@ -9,12 +9,38 @@
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="/MyWeb/css/blogdetail.css">
 <script type="text/javascript">
-	window.onload=function(){
-	    var verifyObj = document.getElementById("verifyCodeImage");
-	    verifyObj.onclick=function(){
-	        //this.src="SecurityCodeImageAction?timestamp="+new Date().getTime();
-	        this.src="blog/createCodeImage";
-	    };
+	window.onload=validVerifyCode;
+	//验证验证码是否正确
+	function validVerifyCode(){
+	    var isValid = document.getElementById('securityCodeIsValid').value;
+	    //alert(isValid);
+	    //alert(securityCodeIsValid=="NOTVALID");
+		if(isValid=="VALID")
+			alert("评论发表成功");
+		if(isValid=="NOTVALID")
+			alert("验证码不正确!");
+	}
+	//刷新验证码
+	function getVerifyCodeImage(){	 
+        document.getElementById("verifyCodeImage").src="blog/createCodeImage?timeStamp=" + new Date();
+   }
+	//检查表单信息是否完整
+	function check(){
+		
+		if(commentForm.personName.value==""){
+			alert("请留下你的名字哦!");
+			return false;
+		}
+		else if(commentForm.personEmail.value==""){
+			alert("请留下你的邮箱哦!");
+			return false;
+		}
+		else if(commentForm.personContent.value==""){
+			alert("请填写评论内容");
+			return false;
+		}
+		else
+			commentForm.submit();
 	}
 </script>
 </head>
@@ -48,8 +74,9 @@
 			</p>
 		</div>
 		<h1>发表评论</h1>
-		<div class="postComment">
-			<form action="#">
+		<div class="postComment">			
+			<form  name="commentForm" action="blog/addComment">
+				<input type="hidden" name="blog.id" value="<s:property value="blog.id"/>"/>
 				<table>
 					<tr>
 						<td>博客：</td>
@@ -58,36 +85,38 @@
 					<tr>
 						<td>留言人：</td>
 						<td>
-							<input name="comment.personName"/>
+							<input name="comment.personName" id="personName"/>
 							<span class="starSymbol">*</span>
 						</td>
 					</tr>
 					<tr>
 						<td>电子邮箱：</td>
 						<td>
-							<input name="comment.personEmail"/>
+							<input name="comment.personEmail" id="personEmail"/>
 							<span class="starSymbol">*</span>
 						</td>
 					</tr>
 					<tr>
 						<td>评论内容：</td>
 						<td>
-							<textarea name="comment.content"></textarea>
+							<textarea name="comment.content" id="personContent"></textarea>
 							<span class="starSymbol">*</span>
 						</td>
 					</tr>
 					<tr>
 						<td>验证码：</td>
 						<td>
-							<input name="verifyCode"/>
-							<img id="verifyCodeImage" alt="看不清，换一张" src="createCodeImage" style="vertical-align: middle;
-							 argin-bottom: 3px; cursor: pointer">
+							<input type="hidden" id="securityCodeIsValid"  value="<s:property value="verifyCodeIsValide"/>"/>
+							<input name="securityCode" id="verifyCodeClient" type="text"/>
+							<img id="verifyCodeImage" alt="看不清，换一张" src="blog/createCodeImage?verifyCodeIsValide=<s:property value="verifyCodeIsValide"/>" 
+											style="vertical-align: middle;
+							 argin-bottom: 3px; cursor: pointer" onclick="getVerifyCodeImage()">
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
-							<input type="submit" value="提交"/>
+							<input type="button" onclick="check()" value="提交"/>
 						</td>
 					</tr>
 				</table>

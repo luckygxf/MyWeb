@@ -4,20 +4,25 @@ import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.gxf.beans.Blog;
 import com.gxf.beans.Comment;
 import com.gxf.beans.Tag;
 import com.gxf.dao.BlogDao;
+import com.gxf.dao.CommentDao;
 import com.gxf.dao.TagDao;
 import com.gxf.dao.impl.BlogDaoImp;
+import com.gxf.dao.impl.CommentDaoImp;
 import com.gxf.dao.impl.TagDaoImp;
 import com.gxf.util.Pager;
 import com.gxf.util.SecurityCode;
 import com.gxf.util.SecurityImage;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class BlogAction extends ActionSupport{
+public class BlogAction extends ActionSupport implements  SessionAware{
 	
 	/**
 	 * 
@@ -26,6 +31,7 @@ public class BlogAction extends ActionSupport{
 	//数据库访问类
 	private BlogDao blogDao = new BlogDaoImp();
 	private TagDao tagDao = new TagDaoImp();
+	private CommentDao commentDao = new CommentDaoImp();
 	
 	private List<Blog> listOfBlog;
 	private Pager pager;
@@ -35,9 +41,10 @@ public class BlogAction extends ActionSupport{
 	private Comment comment;
 	
 	private ByteArrayInputStream imageStream;
-	
-
-
+	//客户端提交的校验码
+	private String securityCode;
+	private Map session;	
+	private String verifyCodeIsValide;
 	
 
 	/**
@@ -119,19 +126,41 @@ public class BlogAction extends ActionSupport{
 	 */
 	public String createSecurityCodeImageAction(){
 		//获取默认难度和长度的验证码
-		String securityCode = SecurityCode.getSecurityCode();
+		securityCode = SecurityCode.getSecurityCode();
+
 		imageStream = SecurityImage.getImageAsInputStream(securityCode);
+		
+		session.put("securityCode", securityCode);
 		
 		return SUCCESS;
 	}
 	
 	/**
-	 * 对博客进行分页
+	 * 为博客添加
+	 * @return
 	 */
-	public void getBlogByPage(){
+	public String addComment(){
+		//查询评论的博客
+		Blog blogToComment = blogDao.queryBlogById(blog.getId());
+		//传回给页面
+		blog = blogToComment;
+		//验证校验码
+		String serverVerifyCode = (String) session.get("securityCode");
 		
-	}
+		if(!serverVerifyCode.equals(this.securityCode)){
+			verifyCodeIsValide="NOTVALID";
+			return SUCCESS;
+		}
+		else
+			verifyCodeIsValide="VALID";
+		//向数据库中写入评论
+		comment.setBlog(blogToComment);
 
+		commentDao.addComment(comment);
+
+		return SUCCESS;
+	}
+	
 	public List<Blog> getListOfBlog() {
 		return listOfBlog;
 	}
@@ -184,4 +213,32 @@ public class BlogAction extends ActionSupport{
 	public void setImageStream(ByteArrayInputStream imageStream) {
 		this.imageStream = imageStream;
 	}
+
+	@Override
+	public void setSession(Map session) {
+		this.session = session;
+		
+	}
+
+	public String getSecurityCode() {
+		return securityCode;
+	}
+
+	public void setSecurityCode(String securityCode) {
+		this.securityCode = securityCode;
+	}
+
+	public Map getSession() {
+		return session;
+	}
+
+	public String getVerifyCodeIsValide() {
+		return verifyCodeIsValide;
+	}
+
+	public void setVerifyCodeIsValide(String verifyCodeIsValide) {
+		this.verifyCodeIsValide = verifyCodeIsValide;
+	}	
+	
+	
 }

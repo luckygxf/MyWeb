@@ -17,24 +17,28 @@
     
     <!-- blog对应的action -->
 	<package name="blog" namespace="/blog" extends="struts-default">
-    	<action name = "blogAction" class = "com.gxf.blog.BlogAction" method = "queryBlogs">
+    	<action name = "blogAction" class = "com.gxf.blog.BlogAction" method="queryBlogs">
     		<result name="success">/WEB-INF/jsp/blog/blog.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name = "queryBlogDetailAction" class = "com.gxf.blog.BlogAction" method = "queryBlogDetail">
+    	<action name = "queryBlogDetailAction" class = "com.gxf.blog.BlogAction" method="queryBlogDetail">
     		<result name="success">/WEB-INF/jsp/blog/blogDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name = "queryBlogByTag" class = "com.gxf.blog.BlogAction" method = "queryBlogByTag">
+    	<action name = "queryBlogByTag" class = "com.gxf.blog.BlogAction" method="queryBlogByTag">
     		<result name="success">/WEB-INF/jsp/blog/blog.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name = "createCodeImage" class = "com.gxf.blog.BlogAction" method = "createSecurityCodeImageAction">
+    	<action name = "createCodeImage" class = "com.gxf.blog.BlogAction" method="createSecurityCodeImageAction">
     		<result name="success" type="stream">
 	    		<param name="contentType">image/jpeg</param>
 	            <param name="inputName">imageStream</param>
 	            <param name="bufferSize">2048</param>
     		</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name = "addComment" class = "com.gxf.blog.BlogAction" method="addComment">
+    		<result name="success">/WEB-INF/jsp/blog/blogDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>

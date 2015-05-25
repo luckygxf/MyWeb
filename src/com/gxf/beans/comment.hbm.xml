@@ -26,7 +26,6 @@
 			column="blogId"
 			class="com.gxf.beans.Blog"
 			lazy="false"
-			insert="false"
 		/>
 	</class>
 
