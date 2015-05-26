@@ -24,4 +24,13 @@ public class Util {
 		
 		return result;
 	}
+	/**
+     * 获取当前工程目录
+     * @return
+     */
+    public String getCurrentProjectPath(){
+    	String curPath = System.getProperty("user.dir");
+    	
+    	return curPath;
+    }
 }

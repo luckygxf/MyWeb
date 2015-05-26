@@ -67,7 +67,7 @@
 				<ul>
 					<li><a href="main/mainAction" target="pageContent">首页 </a>| </li>
 					<li><a href="blog/blogAction" target="pageContent">博客 </a>| </li>
-					<li><a href="picture/pictureAction" target="pageContent">相册 </a>| </li>
+					<li><a href="photo/photoAction" target="pageContent">相册 </a>| </li>
 					<li><a href="resource/resourceAction" target="pageContent">资源</a> | </li>
 					<li><a href="book/bookAction" target="pageContent">书库 </a>| </li>
 					<li><a href="collection/collectionAction" target="pageContent">收藏 </a>| </li>
