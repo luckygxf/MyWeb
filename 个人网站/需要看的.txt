@@ -2,7 +2,6 @@
 
 1.搞清楚tcp、udp、ip三个协议
 
-1.tomcat内存溢出
-2.java NaN
+1.hibernate第一次加载速度慢
 
 1.中午测试snmp应用程序

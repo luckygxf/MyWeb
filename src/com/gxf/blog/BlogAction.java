@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javassist.bytecode.Descriptor.Iterator;
+
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.gxf.beans.Blog;
@@ -57,9 +59,7 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 		
 		if(listOfBlog == null)
 			listOfBlog = blogDao.queryBlog(pager);	
-		System.out.println("listOfBlog.size() = " + listOfBlog.size());
-		System.out.println("comments size = " + listOfBlog.get(0).getComments().size());
-		System.out.println("tags size = " + listOfBlog.get(0).getTags().size());
+	
 		return SUCCESS;
 	}
 	
@@ -70,11 +70,10 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	public String queryBlogDetail(){
 		int blogId = blog.getId();
 		blog = blogDao.queryBlogById(blogId);
-		
+
 		//¥¶¿Ì±Í«©	
 		tags.addAll(blog.getTags());
-		
-				
+						
 		return SUCCESS;
 	}
 	

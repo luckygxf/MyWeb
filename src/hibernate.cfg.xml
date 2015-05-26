@@ -9,7 +9,9 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://210.38.235.184:3306/myweb</property>
+        <property name="connection.url">
+        	jdbc:mysql://210.38.235.184:3306/myweb?useUnicode=true&amp;characterEncoding=utf-8
+        </property>
         <property name="connection.username">root</property>
         <property name="connection.password">luckygxf</property>
 
@@ -40,5 +42,6 @@
 		<mapping resource="com/gxf/beans/user.hbm.xml"/>
 		<mapping resource="com/gxf/beans/tag.hbm.xml"/>
     </session-factory>
-
+	
+	
 </hibernate-configuration>

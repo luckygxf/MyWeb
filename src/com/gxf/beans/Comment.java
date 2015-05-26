@@ -50,21 +50,18 @@ public class Comment {
 		return personName;
 	}
 	public void setPersonName(String personName) {
-		personName = util.getUTF8String(personName);
 		this.personName = personName;
 	}
 	public String getPersonEmail() {
 		return personEmail;
 	}
 	public void setPersonEmail(String personEmail) {
-		personEmail = util.getUTF8String(personEmail);
 		this.personEmail = personEmail;
 	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
-		content = util.getUTF8String(content);
 		this.content = content;
 	}
 	
