@@ -85,6 +85,9 @@ public class BlogDaoImp implements BlogDao {
 		query.setInteger(0, startIndex);
 		query.setInteger(1, pageSize);
 		query.addEntity(Blog.class);
+//		String hql = "from Blog";
+//		Query query = session.createQuery(hql);
+		
 		
 		List<Blog> listOfBlog = query.list();
 		

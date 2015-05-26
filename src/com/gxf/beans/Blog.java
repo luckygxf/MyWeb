@@ -20,7 +20,8 @@ public class Blog {
 	private String content;
 	private String type;
 	private int readCount;
-	private List<Comment> comments = new ArrayList<Comment>();
+//	private List<Comment> comments = new ArrayList<Comment>();
+	private Set<Comment> comments;
 	private Set<Tag> tags;
 
 	public int getReadCount() {
@@ -85,10 +86,12 @@ public class Blog {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public List<Comment> getComments() {
+
+	public Set<Comment> getComments() {
 		return comments;
 	}
-	public void setComments(List<Comment> comments) {
+
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 

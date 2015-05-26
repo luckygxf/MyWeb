@@ -82,3 +82,12 @@
 		height:80px;
 		font-size:12px;
 	}
+	.commentContent{
+		font-size:12px;
+		margin-right:5px;
+		color:#888;
+	}
+	h3{
+		color:#839b2e;
+		margin-bottom:5px;
+	}

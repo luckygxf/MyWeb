@@ -13,7 +13,7 @@
 		<property name="content" type="string">
 			<column name="content" length="20"/>
 		</property>		
-		<set name="blogs" table="blogtag" cascade="all" lazy="false" inverse="false">
+		<set name="blogs" table="blogtag" cascade="all" lazy="false">
 			<key column="tagId"/>
 			<many-to-many class="com.gxf.beans.Blog" column="blogId"/> 
 		</set>

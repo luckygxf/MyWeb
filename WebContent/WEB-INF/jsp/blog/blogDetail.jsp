@@ -73,6 +73,14 @@
 				</s:iterator>
 			</p>
 		</div>
+		<div class="commets">
+			<s:iterator value="blog.comments" id="comment">
+					<h1><img alt="评论" src="/MyWeb/image/commentLogo.png"><s:property value="#comment.personName"/> | 发表于 <s:property value="#comment.publishTime"/></h1>
+					<div class="cont">
+						<s:property value="#comment.content"/>
+					</div>
+			</s:iterator>
+		</div>
 		<h1>发表评论</h1>
 		<div class="postComment">			
 			<form  name="commentForm" action="blog/addComment">

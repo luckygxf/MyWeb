@@ -28,17 +28,14 @@
 		<property name="readCount" type="integer">
 			<column name="readCount" />
 		</property>
-		<set name="tags" table="blogtag" cascade="all" lazy="false" inverse="false">
+		<set name="tags" table="blogtag" cascade="all" lazy="false" >
 			<key column="blogId"/>
 			<many-to-many class="com.gxf.beans.Tag" column="tagId"/>
 		</set>
-		<list name="comments" table="comment" inverse="true" cascade="delete" lazy="false">
-			<key>
-				<column name="blogId"/>
-			</key>
-			<index column="publishTime"/>
-			<one-to-many class="com.gxf.beans.Comment"/>
-		</list>
+		<set name="comments" table="comment" cascade="delete" lazy="false" >
+			<key column="blogId"/>
+			<one-to-many class="com.gxf.beans.Comment" />
+		</set>
 	</class>
 
 </hibernate-mapping>

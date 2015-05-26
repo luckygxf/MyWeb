@@ -86,7 +86,7 @@
 						<h3><a href="blog/queryBlogDetailAction?blog.id=<s:property value="#val.id"/>" target="pageContent"><s:property value="#val.title"/></a></h3>
 						<span><s:property value="#val.publishTime"/></span>
 						<span>阅读(<s:property value="#val.readCount"/>)</span>
-						<span>评论(0)</span>
+						<span>评论(<s:property value="#val.comments.size()"/>)</span>
 					</li>
 				</s:iterator>
 				</ul>
