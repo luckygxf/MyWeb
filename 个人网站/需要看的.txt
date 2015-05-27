@@ -5,3 +5,5 @@
 1.hibernate第一次加载速度慢
 
 1.中午测试snmp应用程序
+
+先将java虚拟机规范看完，然后看tcp/ip详解

@@ -46,7 +46,7 @@
     <!-- Picture对应的action -->
     <package name="photo" namespace="/photo" extends="struts-default">
     	<action name="photoAction" class="com.gxf.photo.PhotoAction" method="getAllPhotos">
-    		<result name="success">/WEB-INF/jsp/photo.jsp</result>
+    		<result name="success">/WEB-INF/jsp/photo/photoIndex.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>

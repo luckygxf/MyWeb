@@ -40,7 +40,15 @@
 			return false;
 		}
 		else
+		{
+			var str = commentForm.personEmail.value;
+			var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/; 
+			if(!reg.test(str)){
+				alert("邮箱格式不正确!");
+				return false;
+			}
 			commentForm.submit();
+		}		
 	}
 </script>
 </head>
@@ -115,7 +123,7 @@
 						<td>验证码：</td>
 						<td>
 							<input type="hidden" id="securityCodeIsValid"  value="<s:property value="verifyCodeIsValide"/>"/>
-							<input name="securityCode" id="verifyCodeClient" type="text"/>
+							<input name="securityCode" id="verifyCodeClient" type="text" maxlength="4"/>
 							<img id="verifyCodeImage" alt="看不清，换一张" src="blog/createCodeImage?verifyCodeIsValide=<s:property value="verifyCodeIsValide"/>" 
 											style="vertical-align: middle;
 							 argin-bottom: 3px; cursor: pointer" onclick="getVerifyCodeImage()">
