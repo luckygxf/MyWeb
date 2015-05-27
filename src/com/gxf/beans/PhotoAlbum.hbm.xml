@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gxf.beans">
+	
+	<class name="com.gxf.beans.PhotoAlbum" table="PhotoAlbum">
+		<id name="id" type="integer">
+			<column name="id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="50"/>
+		</property>
+		<property name="createTime" type="timestamp">
+			<column name="createTime" />
+		</property>
+		<property name="backgroundPhotoPath" type="string">
+			<column name="backgroundPhotoPath" length="60"/>
+		</property>
+		<set name="photos" table="Photo" cascade="delete" lazy="false" >
+			<key column="albumId"/>
+			<one-to-many class="com.gxf.beans.Photo" />
+		</set>
+	</class>
+
+</hibernate-mapping>

@@ -41,6 +41,8 @@
 		<mapping resource="com/gxf/beans/comment.hbm.xml"/>
 		<mapping resource="com/gxf/beans/user.hbm.xml"/>
 		<mapping resource="com/gxf/beans/tag.hbm.xml"/>
+		<mapping resource="com/gxf/beans/Photo.hbm.xml"/>
+		<mapping resource="com/gxf/beans/PhotoAlbum.hbm.xml"/>
     </session-factory>
 	
 	

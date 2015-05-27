@@ -39,21 +39,23 @@
 	
 	<div class="photo">
 		<div class="div_ph">
-			<span class="span_to">共有<s:property value="listOfPhotoAlbumInfo.size()"/>个相册</span>
+			<span class="span_to">共有<s:property value="listOfPhotoAlbum.size()"/>个相册</span>
 		</div>		
-		<s:iterator value="listOfPhotoAlbumInfo" id="photoAlbumInfo"> 
+		<s:iterator value="listOfPhotoAlbum" id="photoAlbum"> 
 			<div class="ph_dl">
 				<dd>
 					<p class="photo_bg">
-						<a href="#">
-							<img alt="显示相片" src="<s:property value="#photoAlbumInfo.backImagePath"/>">
+						<a href="photo/queryPhotoListAction">
+							<img alt="显示相片" src="<s:property value="#photoAlbum.backgroundPhotoPath"/>">
 						</a>
 					</p>
 				</dd>
 				<dd class="ph_info">
-					<a href="#"><s:property value="#photoAlbumInfo.name"/></a>
+					<a href="#"><s:property value="#photoAlbum.name"/></a>
 				</dd>
-				<dd>共有<s:property value="#photoAlbumInfo.amountOfPhoto"/>张图片</dd>
+				<dd>共有<s:property value="#photoAlbum.photos.size()"/>张图片 | 
+					<s:property value="#photoAlbum.createTime"/>
+				</dd>
 			</div>
 			
 		</s:iterator>

@@ -8,7 +8,9 @@ import javax.servlet.ServletContext;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.gxf.util.PhotoAlbumInfo;
+import com.gxf.beans.PhotoAlbum;
+import com.gxf.dao.PhotoAlbumDao;
+import com.gxf.dao.impl.PhotoAlbumDaoImp;
 import com.gxf.util.PhotoNameFilter;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -21,14 +23,19 @@ import com.opensymphony.xwork2.ActionSupport;
 public class PhotoAction extends ActionSupport {
 	
 	/**
-	 * 
+	 * 序列号，用于序列化和反序列化
 	 */
 	private static final long serialVersionUID = 1L;
 
 	//相册父文件夹
 	private final String PHOTO_DIRECTION = "photos";
 	//相册信息
-	private List<PhotoAlbumInfo> listOfPhotoAlbumInfo = new ArrayList<PhotoAlbumInfo>();
+	private List<PhotoAlbum> listOfPhotoAlbum = new ArrayList<PhotoAlbum>();
+	
+	private PhotoAlbum photoAlbum;
+	
+	//数据库访问类
+	private PhotoAlbumDao photoAlbumDao = new PhotoAlbumDaoImp();
 	
 	
 	/**
@@ -36,40 +43,38 @@ public class PhotoAction extends ActionSupport {
 	 * @return
 	 */
 	public String getAllPhotos(){
-		//获取相册路径						
-		//1.获取当前项目路径
-		//2.获取相册路径
-		ActionContext ac = ActionContext.getContext();
-		ServletContext sc = (ServletContext) ac.get(ServletActionContext.SERVLET_CONTEXT);
-	
-		String curProjectPath = sc.getRealPath("/");		
-		String photoPath = curProjectPath +  PHOTO_DIRECTION;
-		
-		File photoFile = new File(photoPath);
-		File photoFiles[] = photoFile.listFiles();
-		//将相册名字放到File数组中
-		for(int i = 0; i < photoFiles.length; i++)
-		{
-			//获取相册信息
-			File photos[] = photoFiles[i].listFiles(new PhotoNameFilter());
-			PhotoAlbumInfo photoAlbumInfo = new PhotoAlbumInfo();
-			photoAlbumInfo.setBackImagePath("/MyWeb/photos/" + photoFiles[i].getName() + "/" + photos[0].getName());
-			photoAlbumInfo.setAmountOfPhoto(photos.length);
-			photoAlbumInfo.setName(photoFiles[i].getName());
-			
-			listOfPhotoAlbumInfo.add(photoAlbumInfo);
-		}
+		//从数据库中获取相册信息
+		this.listOfPhotoAlbum = photoAlbumDao.queryAllPhotoAlbum();
 		
 		
 		return SUCCESS;
 	}
-	public List<PhotoAlbumInfo> getListOfPhotoAlbumInfo() {
-		return listOfPhotoAlbumInfo;
+	
+	/**
+	 * 查询相片列表
+	 * @return
+	 */
+	public String queryPhotoList(){
+		return SUCCESS;
 	}
 
-	public void setListOfPhotoAlbumInfo(List<PhotoAlbumInfo> listOfPhotoAlbumInfo) {
-		this.listOfPhotoAlbumInfo = listOfPhotoAlbumInfo;
+	public List<PhotoAlbum> getListOfPhotoAlbum() {
+		return listOfPhotoAlbum;
 	}
+
+	public void setListOfPhotoAlbum(List<PhotoAlbum> listOfPhotoAlbum) {
+		this.listOfPhotoAlbum = listOfPhotoAlbum;
+	}
+
+	public PhotoAlbum getPhotoAlbum() {
+		return photoAlbum;
+	}
+
+	public void setPhotoAlbum(PhotoAlbum photoAlbum) {
+		this.photoAlbum = photoAlbum;
+	}
+	
+	
 		
 
 
