@@ -6,10 +6,8 @@
 <head>
 <style type="text/css">
 	.photo{
-		min-height:300px;
-		padding:10px 30px;
+		padding:10px 10px;
 		margin:10px;
-	    background:#e1e0cc;
 	}
 	
 	.photo .div_ph{
@@ -19,30 +17,63 @@
 		color:#888;
 	}
 	
-	.photo_bg { 
-	    width: 180px; 
-	    height: 150px;
-	    left: 4px;
-	    top: 4px;
-	    border:1px solid #ccc;
-	    background:#fff;
+	.photo .pic_dl{
+		float:left;
+		margin:15px 10px;
 	}	
+	.photo .ph_dl img{
+		width:170px;
+		height:500px;
+		margin:5px;
+	}
+	.page{
+		text-align: center;
+	}
+	.clear{
+		clear:both;
+	}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>相册展示</title>
 </head>
 <body>
-	<div class="photo">
-	<div class="div_ph">
-		<p>
-			<a href="#">返回所有相册>></a>
-			<s:property value="photoAlbum.name"/>
-		</p>
-		<p>
-			<span class="span_to">张相片 | 创建于</span>
-		</p>
+	<div class="content">
+		<div class="photo">
+			<!-- head -->
+			<div class="div_ph">
+				<p>
+					<a href="photo/photoAction">我的相册>></a>
+					<s:property value="photoAlbum.name"/>>>
+				</p>
+				<p>
+					<span class="span_to"><s:property value="photoAlbum.photos.size()"/>张相片 | 创建于 <s:property value="photoAlbum.createTime"/></span>
+				</p>
+			</div>
+			<!-- content -->
+			
+				<s:iterator value="photoAlbum.photos" id="photo">
+				<dl class="pic_dl">
+					<dt>
+						<a href="#">
+							<img alt="<s:property value="#photo.name"/>" src="<s:property value="photoAlbum.path"/><s:property value="#photo.name"/>"
+								style="width: 180px; height: 140px; text-align: center;" 
+							>						
+						</a>
+					</dt>
+					<dt>
+						<s:property value="#photo.name"/>
+					</dt>
+				</dl>
+				</s:iterator>		
+		</div>
+		<div class="clear"></div>
+		<div class="page">
+			<a href="#">首页</a>
+			<a href="#">上一页</a>
+			<a href="#">下一页</a>
+			<a href="#">尾页</a>
+			共有页
+		</div>
 	</div>
-	</div>
-	
 </body>
 </html>

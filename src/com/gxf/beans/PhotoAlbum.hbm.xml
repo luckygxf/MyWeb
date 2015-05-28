@@ -12,6 +12,8 @@
 		</id>
 		<property name="name" type="string">
 			<column name="name" length="50"/>
+		</property><property name="path" type="string">
+			<column name="path" length="50"/>
 		</property>
 		<property name="createTime" type="timestamp">
 			<column name="createTime" />

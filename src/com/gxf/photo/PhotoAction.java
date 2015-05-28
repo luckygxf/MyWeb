@@ -8,9 +8,11 @@ import javax.servlet.ServletContext;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.gxf.beans.Photo;
 import com.gxf.beans.PhotoAlbum;
 import com.gxf.dao.PhotoAlbumDao;
 import com.gxf.dao.impl.PhotoAlbumDaoImp;
+import com.gxf.util.Pager;
 import com.gxf.util.PhotoNameFilter;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -37,12 +39,15 @@ public class PhotoAction extends ActionSupport {
 	//数据库访问类
 	private PhotoAlbumDao photoAlbumDao = new PhotoAlbumDaoImp();
 	
+	private int photoAlbumId;
+	private Pager pager;
+	private Photo curPhoto;
 	
 	/**
 	 * 获取所有的相册
 	 * @return
 	 */
-	public String getAllPhotos(){
+	public String getAllPhotoAlbum(){
 		//从数据库中获取相册信息
 		this.listOfPhotoAlbum = photoAlbumDao.queryAllPhotoAlbum();
 		
@@ -55,9 +60,19 @@ public class PhotoAction extends ActionSupport {
 	 * @return
 	 */
 	public String queryPhotoList(){
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbumId);
 		return SUCCESS;
 	}
-
+	
+	/**
+	 * 查询相片详细信息
+	 * @return
+	 */
+	public String queryPhotoDeatil(){
+		
+		return SUCCESS;		
+	}
+	
 	public List<PhotoAlbum> getListOfPhotoAlbum() {
 		return listOfPhotoAlbum;
 	}
@@ -73,9 +88,30 @@ public class PhotoAction extends ActionSupport {
 	public void setPhotoAlbum(PhotoAlbum photoAlbum) {
 		this.photoAlbum = photoAlbum;
 	}
-	
-	
-		
+
+	public int getPhotoAlbumId() {
+		return photoAlbumId;
+	}
+
+	public void setPhotoAlbumId(int photoAlbumId) {
+		this.photoAlbumId = photoAlbumId;
+	}
+
+	public Pager getPager() {
+		return pager;
+	}
+
+	public void setPager(Pager pager) {
+		this.pager = pager;
+	}
+
+	public Photo getCurPhoto() {
+		return curPhoto;
+	}
+
+	public void setCurPhoto(Photo curPhoto) {
+		this.curPhoto = curPhoto;
+	}		
 
 
 }

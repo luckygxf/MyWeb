@@ -16,6 +16,7 @@ public class PhotoAlbum {
 	private Timestamp createTime;
 	private String backgroundPhotoPath;
 	private Set<Photo> photos;
+	private String path;
 	
 	public PhotoAlbum(){
 		//生成相册创建时间
@@ -58,6 +59,14 @@ public class PhotoAlbum {
 
 	public void setBackgroundPhotoPath(String backgroundPhotoPath) {
 		this.backgroundPhotoPath = backgroundPhotoPath;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 }

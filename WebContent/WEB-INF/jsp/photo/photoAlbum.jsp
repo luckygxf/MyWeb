@@ -45,7 +45,7 @@
 			<div class="ph_dl">
 				<dd>
 					<p class="photo_bg">
-						<a href="photo/queryPhotoListAction">
+						<a href="photo/queryPhotoListAction?photoAlbumId=<s:property value="#photoAlbum.id"/>">
 							<img alt="显示相片" src="<s:property value="#photoAlbum.backgroundPhotoPath"/>">
 						</a>
 					</p>

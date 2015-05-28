@@ -1,44 +1,44 @@
 package com.gxf.test;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.gxf.beans.Blog;
+import com.gxf.beans.Photo;
+import com.gxf.beans.PhotoAlbum;
 import com.gxf.beans.Tag;
 import com.gxf.dao.BlogDao;
+import com.gxf.dao.PhotoAlbumDao;
+import com.gxf.dao.PhotoDao;
 import com.gxf.dao.TagDao;
 import com.gxf.dao.impl.BlogDaoImp;
+import com.gxf.dao.impl.PhotoAlbumDaoImp;
+import com.gxf.dao.impl.PhotoDaoImp;
 import com.gxf.dao.impl.TagDaoImp;
 
 public class Test {
 
 	public static void main(String[] args) {
-//		BlogDao blogDao = new BlogDaoImp();
-//		TagDao tagDao = new TagDaoImp();
-//		
-//		//添加tag
-////		for(int i = 0; i < 3; i++){
-////			Tag tag = new Tag("标签" + i);
-////			tagDao.addTag(tag);
-////		}
-//		
-//		List<Tag> listOfTag = tagDao.queryAllTags();
-//		Set<Tag> tags = new HashSet<Tag>(listOfTag);
-//		
-//		for(int i = 0; i < 59; i++){
-//			Blog blog = new Blog();
-//			String title = "博客标题" + i;
-//			String content = "博客内容" + i;
-//			String author = "作者" + i;
-//			String type = "种类";
-//			blog.setTitle(title);
-//			blog.setAuthor(author);
-//			blog.setContent(content);
-//			blog.setTags(tags);
-//			blog.setType(type);
-//			blogDao.addBlog(blog);
-//		}
+		PhotoDao photoDao = new PhotoDaoImp();
+		PhotoAlbumDao photoAlbumDao = new PhotoAlbumDaoImp();
+		
+		String photoAlbumString = "D:\\apache-tomcat-7.0.59\\webapps\\MyWeb\\photos\\海贼王";
+		
+		
+		File photoAlbumFile = new File(photoAlbumString);
+		File photos[] = photoAlbumFile.listFiles();
+		PhotoAlbum photoAlbum = photoAlbumDao.queryPhotoAlbum(1);
+		
+		for(int i = 0; i < photos.length; i++){
+			Photo photo = new Photo();
+			photo.setName(photos[i].getName());
+			photo.setComment("comment");
+			photo.setPhotoAlbum(photoAlbum);
+			
+			photoDao.addPhoto(photo);
+		}
 	}
 
 }
