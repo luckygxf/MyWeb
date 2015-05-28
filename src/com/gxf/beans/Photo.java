@@ -1,5 +1,7 @@
 package com.gxf.beans;
 
+import java.sql.Timestamp;
+
 /**
  * 相片对应的bean
  * @author Administrator
@@ -10,6 +12,8 @@ public class Photo {
 	private String name;
 	private String comment;
 	private PhotoAlbum photoAlbum;
+	private Timestamp uploadTime;
+	
 	public int getId() {
 		return id;
 	}
@@ -34,5 +38,12 @@ public class Photo {
 	public void setPhotoAlbum(PhotoAlbum photoAlbum) {
 		this.photoAlbum = photoAlbum;
 	}
+	public Timestamp getUploadTime() {
+		return uploadTime;
+	}
+	public void setUploadTime(Timestamp uploadTime) {
+		this.uploadTime = uploadTime;
+	}
+	
 	
 }

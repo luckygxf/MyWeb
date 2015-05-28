@@ -54,7 +54,8 @@
 				<s:iterator value="photoAlbum.photos" id="photo">
 				<dl class="pic_dl">
 					<dt>
-						<a href="#">
+						<a href="photo/queryPhotoDetailAction?curPhoto.id=<s:property value="#photo.id"/>
+											&photoAlbum.id=<s:property value="photoAlbum.id"/>">
 							<img alt="<s:property value="#photo.name"/>" src="<s:property value="photoAlbum.path"/><s:property value="#photo.name"/>"
 								style="width: 180px; height: 140px; text-align: center;" 
 							>						

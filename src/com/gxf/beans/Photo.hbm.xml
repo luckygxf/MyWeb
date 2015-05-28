@@ -16,6 +16,9 @@
 		<property name="comment" type="string">
 			<column name="comment"/>
 		</property>
+		<property name="uploadTime" type="timestamp">
+			<column name="uploadTime"></column>
+		</property>
 		
 		<many-to-one name="photoAlbum"
 			column="albumId"

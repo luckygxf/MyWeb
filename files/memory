@@ -8,3 +8,5 @@
 	类似java类和属性命名规范
 3.查询方法命名
 	不用后面+s如查询所有相册,queryPhotoAlbum()
+4.Action在struts2配置文件中命名
+	最后以Action结束

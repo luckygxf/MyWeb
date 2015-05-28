@@ -11,7 +11,9 @@ import org.apache.struts2.ServletActionContext;
 import com.gxf.beans.Photo;
 import com.gxf.beans.PhotoAlbum;
 import com.gxf.dao.PhotoAlbumDao;
+import com.gxf.dao.PhotoDao;
 import com.gxf.dao.impl.PhotoAlbumDaoImp;
+import com.gxf.dao.impl.PhotoDaoImp;
 import com.gxf.util.Pager;
 import com.gxf.util.PhotoNameFilter;
 import com.opensymphony.xwork2.ActionContext;
@@ -38,10 +40,14 @@ public class PhotoAction extends ActionSupport {
 	
 	//数据库访问类
 	private PhotoAlbumDao photoAlbumDao = new PhotoAlbumDaoImp();
+	private PhotoDao photoDao = new PhotoDaoImp();
 	
 	private int photoAlbumId;
 	private Pager pager;
 	private Photo curPhoto;
+	//滚动条显示的图片
+	private List<Photo> listOfScrollPhoto;
+//	private int scrollStartIndex;
 	
 	/**
 	 * 获取所有的相册
@@ -60,6 +66,7 @@ public class PhotoAction extends ActionSupport {
 	 * @return
 	 */
 	public String queryPhotoList(){
+
 		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbumId);
 		return SUCCESS;
 	}
@@ -69,8 +76,29 @@ public class PhotoAction extends ActionSupport {
 	 * @return
 	 */
 	public String queryPhotoDeatil(){
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
+		curPhoto = photoDao.queryPhotoById(curPhoto.getId());
+		//查询滑动窗口的列表
+		listOfScrollPhoto = photoDao.queryPhotoByStartIndexAndSize(photoAlbum, 0, 5);
 		
 		return SUCCESS;		
+	}
+	
+	/**
+	 * 查询下一张图片
+	 * @return
+	 */
+	public String queryPhotoNext(){
+		//查询相册信息
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
+		//相片基本信息
+		Photo nextPhoto = photoDao.queryNextPhoto(curPhoto.getId());
+		if(null != nextPhoto)
+			curPhoto = nextPhoto;
+		else
+			curPhoto = photoDao.queryNextPhoto(curPhoto.getId());		
+		
+		return SUCCESS;
 	}
 	
 	public List<PhotoAlbum> getListOfPhotoAlbum() {
@@ -111,7 +139,23 @@ public class PhotoAction extends ActionSupport {
 
 	public void setCurPhoto(Photo curPhoto) {
 		this.curPhoto = curPhoto;
-	}		
+	}
+
+	public List<Photo> getListOfScrollPhoto() {
+		return listOfScrollPhoto;
+	}
+
+	public void setListOfScrollPhoto(List<Photo> listOfScrollPhoto) {
+		this.listOfScrollPhoto = listOfScrollPhoto;
+	}
+
+//	public int getScrollStartIndex() {
+//		return scrollStartIndex;
+//	}
+//
+//	public void setScrollStartIndex(int scrollStartIndex) {
+//		this.scrollStartIndex = scrollStartIndex;
+//	}		
 
 
 }
