@@ -134,6 +134,27 @@ public class PhotoAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 查询指定相片
+	 * @return
+	 */
+	public String queryCurPhoto(){
+		//查询相册信息
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
+		//查询上一张
+		curPhoto = photoDao.queryPhotoById(curPhoto.getId());
+			
+		//查询滑动窗口的列表
+		listOfScrollPhoto = photoDao.queryPhotoByUploadTimeAndSize(photoAlbum, curPhoto, 5);
+		if(listOfScrollPhoto == null){
+			listOfScrollPhoto = new ArrayList<Photo>();
+			listOfScrollPhoto.add(curPhoto);
+		}
+		
+		
+		return SUCCESS;
+	}
+	
 	
 	public List<PhotoAlbum> getListOfPhotoAlbum() {
 		return listOfPhotoAlbum;

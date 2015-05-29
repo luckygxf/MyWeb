@@ -65,6 +65,10 @@
     		<result name="success">/WEB-INF/jsp/photo/photoDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
+    	<action name="queryCurPhotoPreAction" class="com.gxf.action.PhotoAction" method="queryCurPhoto">
+    		<result name="success">/WEB-INF/jsp/photo/photoDetail.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
     </package>
     <!-- resource对应的action -->
     <package name="resource" namespace="/resource" extends="struts-default">

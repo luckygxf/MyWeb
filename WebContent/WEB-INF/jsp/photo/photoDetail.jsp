@@ -105,10 +105,14 @@
 			<div class="pr_top" onclick="getPreImage(<s:property value="curPhoto.id"/>, <s:property value="photoAlbum.id"/>)"></div>
 			<div id="scrollImg">
 				<s:iterator value="listOfScrollPhoto" id="photo">
-					<p class="pc">
-						<a href="#">
+					<p class="pc"
+						<s:if test="#photo.id==curPhoto.id">
+							style="border: 1px solid red;"
+						</s:if>
+					>
+						<a href="photo/queryCurPhotoPreAction?curPhoto.id=<s:property value="#photo.id"/>&photoAlbum.id=<s:property value="photoAlbum.id"/>">
 							<img alt="<s:property value="#photo.name"/>" src="<s:property value="photoAlbum.path"/><s:property value="#photo.name"/>"
-									style="width: 60px; height: 60px;"
+									style="width: 67px; height: 60px;"
 							>
 							
 						</a>
