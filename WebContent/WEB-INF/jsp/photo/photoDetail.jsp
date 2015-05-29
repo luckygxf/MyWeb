@@ -76,8 +76,12 @@
 	}
 </style>
 <script type="text/javascript">
-	function getImage(photoId, photoAlbumId){
+	function getNextImage(photoId, photoAlbumId){
 		location.href="photo/queryPhotoNextAction?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;
+	}
+	
+	function getPreImage(photoId, photoAlbumId){
+		location.href="photo/queryPhotoPreAction?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;
 	}
 </script>
 </head>
@@ -98,7 +102,7 @@
 			<div id="pinfo"><s:property value="curPhoto.comment"/></div>
 		</div>
 		<div class="pright">
-			<div class="pr_top"></div>
+			<div class="pr_top" onclick="getPreImage(<s:property value="curPhoto.id"/>, <s:property value="photoAlbum.id"/>)"></div>
 			<div id="scrollImg">
 				<s:iterator value="listOfScrollPhoto" id="photo">
 					<p class="pc">
@@ -112,7 +116,7 @@
 				</s:iterator>
 			</div>
 			
-			<div class="pr_bot" onclick="getImage(<s:property value="curPhoto.id"/>, <s:property value="photoAlbum.id"/>)"></div>
+			<div class="pr_bot" onclick="getNextImage(<s:property value="curPhoto.id"/>, <s:property value="photoAlbum.id"/>)"></div>
 		</div>
 	</div>
 </body>

@@ -85,7 +85,7 @@ public class PhotoAction extends ActionSupport {
 	}
 	
 	/**
-	 * 查询下一张图片
+	 * 查询下一张相片
 	 * @return
 	 */
 	public String queryPhotoNext(){
@@ -108,6 +108,32 @@ public class PhotoAction extends ActionSupport {
 		
 		return SUCCESS;
 	}
+	
+	/**
+	 * 查询上一张相片
+	 * @return
+	 */
+	public String queryPhotoPre(){
+		//查询相册信息
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
+		//查询上一张
+		curPhoto = photoDao.queryPhotoById(curPhoto.getId());
+		Photo prePhoto = photoDao.queryPrePhoto(photoAlbum, curPhoto);
+		//如果不是第一张
+		if(null != prePhoto)
+			curPhoto = prePhoto;
+			
+		//查询滑动窗口的列表
+		listOfScrollPhoto = photoDao.queryPhotoByUploadTimeAndSize(photoAlbum, curPhoto, 5);
+		if(listOfScrollPhoto == null){
+			listOfScrollPhoto = new ArrayList<Photo>();
+			listOfScrollPhoto.add(curPhoto);
+		}
+		
+		
+		return SUCCESS;
+	}
+	
 	
 	public List<PhotoAlbum> getListOfPhotoAlbum() {
 		return listOfPhotoAlbum;

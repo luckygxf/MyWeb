@@ -119,6 +119,32 @@ public class PhotoDaoImp implements PhotoDao {
 		
 		return result;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.gxf.dao.PhotoDao#queryPrePhoto(com.gxf.beans.PhotoAlbum, com.gxf.beans.Photo)
+	 */
+	@Override
+	public Photo queryPrePhoto(PhotoAlbum photoAlbum, Photo photo) {
+		Session session = baseDao.getSession();
+		
+		session.beginTransaction();
+		
+		String sql = "select * from photo where albumid = ? and timestampdiff(second, uploadTime, ?) > 0 order by uploadtime desc limit 1";
+		SQLQuery sqlQuery = session.createSQLQuery(sql);
+		sqlQuery.setInteger(0, photoAlbum.getId());
+		sqlQuery.setTimestamp(1, photo.getUploadTime());
+		sqlQuery.addEntity(Photo.class);
+		
+		Photo result = null;
+		List<Photo> listOfPhoto = sqlQuery.list();
+		if(listOfPhoto != null && listOfPhoto.size() != 0)
+			result = listOfPhoto.get(0);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		return result;
+	}
 	
 	
 

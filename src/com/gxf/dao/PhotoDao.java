@@ -42,10 +42,18 @@ public interface PhotoDao {
 	public int queryPhotoCount();
 	
 	/**
-	 * 查询下一张图片
+	 * 查询下一张相片
 	 * @param photoId
 	 * @return
 	 */
 	public Photo queryNextPhoto(PhotoAlbum photoAlbum, Photo photo);
+	
+	/**
+	 * 查询上一张相片
+	 * @param photoAlbum
+	 * @param photo
+	 * @return
+	 */
+	public Photo queryPrePhoto(PhotoAlbum photoAlbum, Photo photo);
 	
 }
