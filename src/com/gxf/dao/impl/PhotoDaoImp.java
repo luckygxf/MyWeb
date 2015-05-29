@@ -55,14 +55,14 @@ public class PhotoDaoImp implements PhotoDao {
 	 * @see com.gxf.dao.PhotoDao#queryPhotoByStartIndexAndSize(int, int)
 	 */
 	@Override
-	public List<Photo> queryPhotoByStartIndexAndSize(PhotoAlbum photoAlbum, int startIndex, int size) {
+	public List<Photo> queryPhotoByUploadTimeAndSize(PhotoAlbum photoAlbum,Photo photo, int size) {
 		Session session = baseDao.getSession();
 		
 		session.beginTransaction();
-		String sql = "select * from photo where albumId = ? limit ?, ?";
+		String sql = "select * from photo where albumId = ? and uploadTime>= ? order by uploadTime asc limit ?";
 		SQLQuery sqlQuery = session.createSQLQuery(sql);
 		sqlQuery.setInteger(0, photoAlbum.getId());
-		sqlQuery.setInteger(1, startIndex);
+		sqlQuery.setDate(1, photo.getUploadTime());
 		sqlQuery.setInteger(2, size);
 		
 		sqlQuery.addEntity(Photo.class);
@@ -97,17 +97,22 @@ public class PhotoDaoImp implements PhotoDao {
 	 * @see com.gxf.dao.PhotoDao#queryNextPhoto(com.gxf.beans.Photo)
 	 */
 	@Override
-	public Photo queryNextPhoto(int photoId) {
+	public Photo queryNextPhoto(PhotoAlbum photoAlbum, Photo photo) {
 		Session session = baseDao.getSession();
 		
 		session.beginTransaction();
 		
-		String sql = "select * from photo where id >= ? limit 1";
+//		String sql = "select * from photo where uploadTime > ? limit 1";
+		String sql = "select * from photo where albumid = ? and timestampdiff(second, uploadTime, ?) < 0 limit 1";
 		SQLQuery sqlQuery = session.createSQLQuery(sql);
-		sqlQuery.setInteger(0, photoId);
+		sqlQuery.setInteger(0, photoAlbum.getId());
+		sqlQuery.setTimestamp(1, photo.getUploadTime());
 		sqlQuery.addEntity(Photo.class);
 		
-		Photo result = (Photo) sqlQuery.list().get(0);
+		Photo result = null;
+		List<Photo> listOfPhoto = sqlQuery.list();
+		if(listOfPhoto != null && listOfPhoto.size() != 0)
+			result = listOfPhoto.get(0);
 		
 		session.getTransaction().commit();
 		session.close();

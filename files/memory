@@ -10,3 +10,4 @@
 	不用后面+s如查询所有相册,queryPhotoAlbum()
 4.Action在struts2配置文件中命名
 	最后以Action结束
+5.相片显示顺序为按时间升序排列

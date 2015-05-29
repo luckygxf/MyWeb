@@ -21,24 +21,24 @@ import com.gxf.dao.impl.TagDaoImp;
 public class Test {
 
 	public static void main(String[] args) {
-		PhotoDao photoDao = new PhotoDaoImp();
-		PhotoAlbumDao photoAlbumDao = new PhotoAlbumDaoImp();
-		
-		String photoAlbumString = "D:\\apache-tomcat-7.0.59\\webapps\\MyWeb\\photos\\海贼王";
-		
-		
-		File photoAlbumFile = new File(photoAlbumString);
-		File photos[] = photoAlbumFile.listFiles();
-		PhotoAlbum photoAlbum = photoAlbumDao.queryPhotoAlbum(1);
-		
-		for(int i = 0; i < photos.length; i++){
-			Photo photo = new Photo();
-			photo.setName(photos[i].getName());
-			photo.setComment("comment");
-			photo.setPhotoAlbum(photoAlbum);
-			
-			photoDao.addPhoto(photo);
-		}
+//		PhotoDao photoDao = new PhotoDaoImp();
+//		PhotoAlbumDao photoAlbumDao = new PhotoAlbumDaoImp();
+//		
+//		String photoAlbumString = "D:\\apache-tomcat-7.0.59\\webapps\\MyWeb\\photos\\海贼王";
+//		
+//		
+//		File photoAlbumFile = new File(photoAlbumString);
+//		File photos[] = photoAlbumFile.listFiles();
+//		PhotoAlbum photoAlbum = photoAlbumDao.queryPhotoAlbum(1);
+//		
+//		for(int i = 0; i < photos.length; i++){
+//			Photo photo = new Photo();
+//			photo.setName(photos[i].getName());
+//			photo.setComment("comment");
+//			photo.setPhotoAlbum(photoAlbum);
+//			
+//			photoDao.addPhoto(photo);
+//		}
 	}
 
 }

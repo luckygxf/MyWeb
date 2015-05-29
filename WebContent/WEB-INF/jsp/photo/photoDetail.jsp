@@ -76,7 +76,7 @@
 	}
 </style>
 <script type="text/javascript">
-	function getImage(photoAlbumId, photoId){
+	function getImage(photoId, photoAlbumId){
 		location.href="photo/queryPhotoNextAction?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;
 	}
 </script>
@@ -92,7 +92,9 @@
 			</p>
 		</div>
 		<div class="pleft">
-			<img alt="<s:property value="photoAlbum.name"/>" src="<s:property value="photoAlbum.path"/><s:property value="curPhoto.name"/>">
+			<img alt="<s:property value="photoAlbum.name"/>" src="<s:property value="photoAlbum.path"/><s:property value="curPhoto.name"/>"
+				style="width: 600px; height: 400px"
+			>
 			<div id="pinfo"><s:property value="curPhoto.comment"/></div>
 		</div>
 		<div class="pright">

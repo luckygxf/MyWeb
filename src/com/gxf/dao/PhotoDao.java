@@ -33,7 +33,7 @@ public interface PhotoDao {
 	 * @param size
 	 * @return
 	 */
-	public List<Photo> queryPhotoByStartIndexAndSize(PhotoAlbum photoAlbum, int startIndex, int size);
+	public List<Photo> queryPhotoByUploadTimeAndSize(PhotoAlbum photoAlbum, Photo photo, int size);
 	
 	/**
 	 * ²éÑ¯ÕÕÆ¬×ÜÊý
@@ -46,6 +46,6 @@ public interface PhotoDao {
 	 * @param photoId
 	 * @return
 	 */
-	public Photo queryNextPhoto(int photoId);
+	public Photo queryNextPhoto(PhotoAlbum photoAlbum, Photo photo);
 	
 }

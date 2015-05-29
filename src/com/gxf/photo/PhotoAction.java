@@ -79,7 +79,7 @@ public class PhotoAction extends ActionSupport {
 		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
 		curPhoto = photoDao.queryPhotoById(curPhoto.getId());
 		//查询滑动窗口的列表
-		listOfScrollPhoto = photoDao.queryPhotoByStartIndexAndSize(photoAlbum, 0, 5);
+		listOfScrollPhoto = photoDao.queryPhotoByUploadTimeAndSize(photoAlbum, curPhoto, 5);
 		
 		return SUCCESS;		
 	}
@@ -91,12 +91,20 @@ public class PhotoAction extends ActionSupport {
 	public String queryPhotoNext(){
 		//查询相册信息
 		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
-		//相片基本信息
-		Photo nextPhoto = photoDao.queryNextPhoto(curPhoto.getId());
+		//查询下一张
+		curPhoto = photoDao.queryPhotoById(curPhoto.getId());
+		Photo nextPhoto = photoDao.queryNextPhoto(photoAlbum, curPhoto);
+		//如果不是最后一张
 		if(null != nextPhoto)
 			curPhoto = nextPhoto;
-		else
-			curPhoto = photoDao.queryNextPhoto(curPhoto.getId());		
+			
+		//查询滑动窗口的列表
+		listOfScrollPhoto = photoDao.queryPhotoByUploadTimeAndSize(photoAlbum, curPhoto, 5);
+		if(listOfScrollPhoto == null){
+			listOfScrollPhoto = new ArrayList<Photo>();
+			listOfScrollPhoto.add(curPhoto);
+		}
+		
 		
 		return SUCCESS;
 	}
