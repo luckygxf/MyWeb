@@ -9,7 +9,7 @@
 	<constant name="struts.i18n.encoding" value="utf-8" />
     <!-- main页面对应的action -->
     <package name="main" namespace="/main" extends="struts-default">
-    	<action name = "mainAction" class = "com.gxf.main.MainAction" method = "main">
+    	<action name = "mainAction" class = "com.gxf.action.MainAction" method = "main">
     		<result name="success">/WEB-INF/jsp/main.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
@@ -17,19 +17,19 @@
     
     <!-- blog对应的action -->
 	<package name="blog" namespace="/blog" extends="struts-default">
-    	<action name = "blogAction" class = "com.gxf.blog.BlogAction" method="queryBlogs">
+    	<action name = "blogAction" class = "com.gxf.action.BlogAction" method="queryBlogs">
     		<result name="success">/WEB-INF/jsp/blog/blog.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name = "queryBlogDetailAction" class = "com.gxf.blog.BlogAction" method="queryBlogDetail">
+    	<action name = "queryBlogDetailAction" class = "com.gxf.action.BlogAction" method="queryBlogDetail">
     		<result name="success">/WEB-INF/jsp/blog/blogDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name = "queryBlogByTag" class = "com.gxf.blog.BlogAction" method="queryBlogByTag">
+    	<action name = "queryBlogByTag" class = "com.gxf.action.BlogAction" method="queryBlogByTag">
     		<result name="success">/WEB-INF/jsp/blog/blog.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name = "createCodeImage" class = "com.gxf.blog.BlogAction" method="createSecurityCodeImageAction">
+    	<action name = "createCodeImage" class = "com.gxf.action.BlogAction" method="createSecurityCodeImageAction">
     		<result name="success" type="stream">
 	    		<param name="contentType">image/jpeg</param>
 	            <param name="inputName">imageStream</param>
@@ -37,7 +37,7 @@
     		</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name = "addComment" class = "com.gxf.blog.BlogAction" method="addComment">
+    	<action name = "addComment" class = "com.gxf.action.BlogAction" method="addComment">
     		<result name="success">/WEB-INF/jsp/blog/blogDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
@@ -45,61 +45,61 @@
     
     <!-- Photo对应的action -->
     <package name="photo" namespace="/photo" extends="struts-default">
-    	<action name="photoAction" class="com.gxf.photo.PhotoAction" method="getAllPhotoAlbum">
+    	<action name="photoAction" class="com.gxf.action.PhotoAction" method="getAllPhotoAlbum">
     		<result name="success">/WEB-INF/jsp/photo/photoAlbum.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name="queryPhotoListAction" class="com.gxf.photo.PhotoAction" method="queryPhotoList">
+    	<action name="queryPhotoListAction" class="com.gxf.action.PhotoAction" method="queryPhotoList">
     		<result name="success">/WEB-INF/jsp/photo/photoList.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name="queryPhotoDetailAction" class="com.gxf.photo.PhotoAction" method="queryPhotoDeatil">
+    	<action name="queryPhotoDetailAction" class="com.gxf.action.PhotoAction" method="queryPhotoDeatil">
     		<result name="success">/WEB-INF/jsp/photo/photoDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
-    	<action name="queryPhotoNextAction" class="com.gxf.photo.PhotoAction" method="queryPhotoNext">
+    	<action name="queryPhotoNextAction" class="com.gxf.action.PhotoAction" method="queryPhotoNext">
     		<result name="success">/WEB-INF/jsp/photo/photoDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
     <!-- resource对应的action -->
     <package name="resource" namespace="/resource" extends="struts-default">
-    	<action name = "resourceAction" class = "com.gxf.resource.ResourceAction" method = "getAllResource">
+    	<action name = "resourceAction" class = "com.gxf.action.ResourceAction" method = "getAllResource">
     		<result name="success">/WEB-INF/jsp/resource.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
     <!-- book对应的action -->
     <package name="book" namespace="/book" extends="struts-default">
-    	<action name = "bookAction" class = "com.gxf.book.BookAction" method = "getAllBook">
+    	<action name = "bookAction" class = "com.gxf.action.BookAction" method = "getAllBook">
     		<result name="success">/WEB-INF/jsp/book.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
     <!-- collection对应的action -->
     <package name="collection" namespace="/collection" extends="struts-default">
-    	<action name = "collectionAction" class = "com.gxf.collection.CollectionAction" method = "getAllCollection">
+    	<action name = "collectionAction" class = "com.gxf.action.CollectionAction" method = "getAllCollection">
     		<result name="success">/WEB-INF/jsp/collection.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
     <!-- travel对应的action -->
     <package name="travel" namespace="/travel" extends="struts-default">
-    	<action name = "travelAction" class = "com.gxf.travel.TravelAction" method = "init">
+    	<action name = "travelAction" class = "com.gxf.action.TravelAction" method = "init">
     		<result name="success">/WEB-INF/jsp/travel.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
     <!-- message对应的action -->
     <package name="message" namespace="/message" extends="struts-default">
-    	<action name = "messageAction" class = "com.gxf.message.MessageAction" method = "getAllMessage">
+    	<action name = "messageAction" class = "com.gxf.action.MessageAction" method = "getAllMessage">
     		<result name="success">/WEB-INF/jsp/message.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
     <!-- about对应的action -->
     <package name="about" namespace="/about" extends="struts-default">
-    	<action name = "aboutAction" class = "com.gxf.about.AboutAction" method = "init">
+    	<action name = "aboutAction" class = "com.gxf.action.AboutAction" method = "init">
     		<result name="success">/WEB-INF/jsp/aboutMe.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>

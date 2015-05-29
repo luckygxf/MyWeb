@@ -1,4 +1,4 @@
-package com.gxf.travel;
+package com.gxf.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 

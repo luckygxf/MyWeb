@@ -1,4 +1,4 @@
-package com.gxf.photo;
+package com.gxf.action;
 
 import java.io.File;
 import java.util.ArrayList;

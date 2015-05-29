@@ -1,4 +1,4 @@
-package com.gxf.book;
+package com.gxf.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 

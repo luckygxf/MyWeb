@@ -1,4 +1,4 @@
-package com.gxf.blog;
+package com.gxf.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;

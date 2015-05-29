@@ -1,15 +1,14 @@
-package com.gxf.resource;
+package com.gxf.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ResourceAction extends ActionSupport{
-	
+public class CollectionAction extends ActionSupport {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public String getAllResource(){
+	public String getAllCollection(){
 		return SUCCESS;
 	}
 }

@@ -1,14 +1,14 @@
-package com.gxf.collection;
+package com.gxf.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CollectionAction extends ActionSupport {
+public class MessageAction extends ActionSupport {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public String getAllCollection(){
+	public String getAllMessage(){
 		return SUCCESS;
 	}
-}
+}	
