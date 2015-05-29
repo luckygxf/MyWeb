@@ -55,6 +55,25 @@
 			color:#FFFFFF; 
 			text-decoration: none; 
 		} 
+		#footer{
+		  clear:both;
+		  margin:10px 0 0 50;
+		  padding:10px 0 0 0;
+		  border-top:2px solid #f30;
+		  text-align:center;
+		  font-size: 10px;
+		}
+		#footer p{
+			margin-top:5px;
+		}
+		#footer a{
+			color:#000000;
+			text-decoration:none;
+		}
+		#footer a:hover{ 
+			color:#ff00cc;
+			text-decoration:underline;
+		}
 	</style>
 </head>
 <body>
@@ -85,7 +104,21 @@
 		</div>
 		<!-- 页面底部 -->
 		<div id = "footer">
-			footer
+			<p>
+				<a href="#">友情链接</a>|
+				<a href="#">关于我们</a>|
+				<a href="#">给我留言</a>|
+				<a href="#">站点地图</a>
+			</p>			
+			<p>
+				本站部分文章、资源来自互联网，版权归原作者及网站所有，如果侵犯了您的权利，请及时致信告知我站
+			</p>
+			<p>
+				版权声明：凡文章来源注明为本站的文章、图片、视频等信息，请在转载时保留本站链接
+			</p>
+			<p>
+				©2015 官先森个人网站,All Rights Reserved.
+			</p>
 		</div>
 	</div>
 </body>

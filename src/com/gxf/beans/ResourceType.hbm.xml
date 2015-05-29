@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gxf.beans">
+	
+	<class name="com.gxf.beans.ResourceType" table="resourceType">
+		<id name="id" type="integer">
+			<column name="id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="50"/>
+		</property>		
+		<set name="resources" table="resource" cascade="delete" lazy="false" >
+			<key column="resourceTypeId"/>
+			<one-to-many class="com.gxf.beans.Resource"/>
+		</set>
+	</class>
+
+</hibernate-mapping>
