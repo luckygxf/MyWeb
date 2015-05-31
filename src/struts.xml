@@ -121,4 +121,10 @@
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
+    <package name="manager" namespace="/manager" extends="struts-default">
+    	<action name = "loginAction" class="com.gxf.action.ManagerAction" method="login">
+    		<result name="success">/WEB-INF/jsp/manager/index_manager.jsp</result>
+            <result name="input">/WEB-INF/jsp/error.jsp</result>
+    	</action>
+    </package>
 </struts>

@@ -32,17 +32,23 @@
 		margin-top: 20px;
 	}
 </style>
+<script type="text/javascript">
+	function checkAndSubmit(){
+		managerInfoForm.submit();
+		
+	}
+</script>
 </head>
 <body>
 	<div id="loginText">
-		<form action="#">
+		<form action="manager/loginAction" name="managerInfoForm">
 			<table>
 				<tr>
 					<td class="txt_1">
 						用户名：
 					</td>
 					<td>
-						<input class="input_1" type="text"/>
+						<input class="input_1" type="text" name="account.loginId"/>
 					</td>
 				</tr>
 				<tr>
@@ -50,12 +56,12 @@
 						登陆密码：
 					</td>
 					<td>
-						<input class="input_1" type="password"/>
+						<input class="input_1" type="password" name="account.password"/>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="button" value="登陆系统" class="input_2"/>
+						<input type="button" value="登陆系统" class="input_2" onclick="checkAndSubmit()"/>
 					</td>
 				</tr>
 			</table>
