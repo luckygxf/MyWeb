@@ -45,6 +45,7 @@
 		<mapping resource="com/gxf/beans/PhotoAlbum.hbm.xml"/>
 		<mapping resource="com/gxf/beans/Resource.hbm.xml"/>
 		<mapping resource="com/gxf/beans/ResourceType.hbm.xml"/>
+		<mapping resource="com/gxf/beans/account.hbm.xml"/>
     </session-factory>
 	
 	

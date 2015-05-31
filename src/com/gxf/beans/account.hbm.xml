@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gxf.beans">
+
+	<class name="com.gxf.beans.Account" table="user">
+		<id name="id" type="integer">
+			<column name="id"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="loginId" type="string">
+			<column name="loginId" length="50"/>
+		</property>
+		<property name="password" type="string">
+			<column name="password" length="50"/>
+		</property>
+	</class>
+
+</hibernate-mapping>

@@ -7,6 +7,15 @@
 	<!-- hot deploy -->
 	<constant name="struts.devMode" value="true"></constant>	
 	<constant name="struts.i18n.encoding" value="utf-8" />
+	
+	<!-- 默认的action等 -->
+	<package name="default" extends="struts-default">
+		<default-action-ref name="errorAction" />
+		<action name="errorAction" class="com.gxf.action.SystemInfoAction">
+			<result name="success">/WEB-INF/jsp/PageNotFound.jsp</result>
+			<result name="input">/WEB-INF/jsp/error.jsp</result>
+		</action>
+	</package>
     <!-- main页面对应的action -->
     <package name="main" namespace="/main" extends="struts-default">
     	<action name = "mainAction" class = "com.gxf.action.MainAction" method = "main">
