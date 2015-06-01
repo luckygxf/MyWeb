@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
+<%
+	String basePath = request.getContextPath();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,21 +38,40 @@
 </style>
 <script type="text/javascript">
 	function checkAndSubmit(){
-		managerInfoForm.submit();
-		
+		var loginId = document.getElementById("loginId");
+		var password = document.getElementById("password");
+		if(loginId == "")
+		{
+			alert("用户名不能为空!");
+			return false;
+		}
+		if(password == ""){
+			alert("密码不能为空!");
+			return false;
+		}
+		managerInfoForm.submit();		
 	}
+	function validAccount(){
+		var isValid = "<%=session.getAttribute("isValid") %>";
+		
+		if(isValid != ""){
+			alert("用户名和密码不正确!");
+			return false;
+		}
+	}
+	
 </script>
 </head>
-<body>
+<body onload="validAccount()">
 	<div id="loginText">
-		<form action="manager/loginAction" name="managerInfoForm">
+		<form action="<%=basePath %>/manager/loginAction" name="managerInfoForm" method="post">
 			<table>
 				<tr>
 					<td class="txt_1">
 						用户名：
 					</td>
 					<td>
-						<input class="input_1" type="text" name="account.loginId"/>
+						<input class="input_1" type="text" name="account.loginId" id="loginId"/>
 					</td>
 				</tr>
 				<tr>
@@ -56,7 +79,7 @@
 						登陆密码：
 					</td>
 					<td>
-						<input class="input_1" type="password" name="account.password"/>
+						<input class="input_1" type="password" name="account.password" id="password"/>
 					</td>
 				</tr>
 				<tr>
