@@ -50,6 +50,14 @@
     		<result name="success">/WEB-INF/jsp/blog/blogDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
+    	<action name="beforeAddBlogAction" class="com.gxf.action.BlogAction" method="beforeAddBlog">
+    		<result name="success">/WEB-INF/jsp/manager/blog/addBlog.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="beforeAddBlogTypeAction" class="com.gxf.action.BlogAction" method="beforeAddBlogType">
+    		<result name="success">/WEB-INF/jsp/manager/blog/addBlogType.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
     </package>
     
     <!-- Photo对应的action -->
@@ -121,10 +129,23 @@
             <result name="input">/failed.jsp</result>
     	</action>
     </package>
+    <!-- 后台管理对应的action -->
     <package name="manager" namespace="/manager" extends="struts-default">
     	<action name = "loginAction" class="com.gxf.action.ManagerAction" method="login">
     		<result name="success">/WEB-INF/jsp/manager/index_manager.jsp</result>
     		<result name="login">/login.jsp</result>
+            <result name="input">/WEB-INF/jsp/error.jsp</result>
+    	</action>
+    	<action name="getTopInfoAction" class="com.gxf.action.ManagerAction" method="getTopInfoAction">
+    		<result name="success">/WEB-INF/jsp/manager/top.jsp</result>
+            <result name="input">/WEB-INF/jsp/error.jsp</result>
+    	</action>
+    	<action name="getMenuAction" class="com.gxf.action.ManagerAction" method="getMenuInfoAction">
+    		<result name="success">/WEB-INF/jsp/manager/menu.jsp</result>
+            <result name="input">/WEB-INF/jsp/error.jsp</result>
+    	</action>
+    	<action name="getMainAction" class="com.gxf.action.ManagerAction" method="getMainAction">
+    		<result name="success">/WEB-INF/jsp/manager/main.jsp</result>
             <result name="input">/WEB-INF/jsp/error.jsp</result>
     	</action>
     </package>

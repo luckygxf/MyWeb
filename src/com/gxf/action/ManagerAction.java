@@ -24,9 +24,10 @@ public class ManagerAction extends ActionSupport implements SessionAware{
 	 * @return
 	 */
 	public String login(){
-		System.out.println("in loginAction");
 		if(accountDao.validAccount(account))
 		{
+			//将用户信息放到session中
+			session.put("accountName", account.getLoginId());
 			return SUCCESS;
 		}
 		
@@ -34,7 +35,28 @@ public class ManagerAction extends ActionSupport implements SessionAware{
 		
 		return LOGIN;
 	}
-
+	
+	/**
+	 * 获取顶部网页需要显示的内容
+	 * @return
+	 */
+	public String getTopInfoAction(){
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 获取菜单信息
+	 * @return
+	 */
+	public String getMenuInfoAction(){
+		return SUCCESS;
+	}
+	
+	public String getMainAction(){
+		return SUCCESS;
+	}
+	
 	public Account getAccount() {
 		return account;
 	}

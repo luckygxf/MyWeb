@@ -18,11 +18,11 @@ public class Blog {
 	private String author;
 	private Timestamp publishTime;
 	private String content;
-	private String type;
 	private int readCount;
 //	private List<Comment> comments = new ArrayList<Comment>();
 	private Set<Comment> comments;
 	private Set<Tag> tags;
+	private BlogType blogType;
 
 	public int getReadCount() {
 		return readCount;
@@ -31,15 +31,6 @@ public class Blog {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	
 	public Blog(){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -93,6 +84,14 @@ public class Blog {
 
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public BlogType getBlogType() {
+		return blogType;
+	}
+
+	public void setBlogType(BlogType blogType) {
+		this.blogType = blogType;
 	}
 
 	

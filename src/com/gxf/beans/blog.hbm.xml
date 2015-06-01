@@ -22,9 +22,6 @@
 		<property name="content" type="string">
 			<column name="content" />
 		</property>
-		<property name="type" type="string">
-			<column name="type" />
-		</property>
 		<property name="readCount" type="integer">
 			<column name="readCount" />
 		</property>
@@ -36,6 +33,11 @@
 			<key column="blogId"/>
 			<one-to-many class="com.gxf.beans.Comment" />
 		</set>
+		<many-to-one name="blogType"
+			column="blogTypeId"
+			class="com.gxf.beans.BlogType"
+			lazy="false"
+		/>
 	</class>
 
 </hibernate-mapping>

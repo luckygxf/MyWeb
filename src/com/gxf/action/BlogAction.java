@@ -162,6 +162,22 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 添加博客之前
+	 * @return
+	 */
+	public String beforeAddBlog(){
+		return SUCCESS;
+	}
+	
+	/**
+	 * 添加博客类型之前
+	 * @return
+	 */
+	public String beforeAddBlogType(){
+		return SUCCESS;
+	}
+	
 	public List<Blog> getListOfBlog() {
 		return listOfBlog;
 	}

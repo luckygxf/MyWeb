@@ -53,8 +53,8 @@
 	}
 	function validAccount(){
 		var isValid = "<%=session.getAttribute("isValid") %>";
-		
-		if(isValid != ""){
+	
+		if(!isValid && isValid != ""){
 			alert("用户名和密码不正确!");
 			return false;
 		}

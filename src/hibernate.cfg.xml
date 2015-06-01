@@ -46,6 +46,7 @@
 		<mapping resource="com/gxf/beans/Resource.hbm.xml"/>
 		<mapping resource="com/gxf/beans/ResourceType.hbm.xml"/>
 		<mapping resource="com/gxf/beans/account.hbm.xml"/>
+		<mapping resource="com/gxf/beans/blogType.hbm.xml"/>
     </session-factory>
 	
 	

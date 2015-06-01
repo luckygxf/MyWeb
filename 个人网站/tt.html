@@ -1,68 +1,98 @@
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>°Ù¶ÈµØÍ¼¹«½»²éÑ¯</title>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
-<script type="text/javascript">
+<meta charset="utf-8">
+<title>å·¦è¾¹è·Ÿéšé¼ æ ‡æ»‘åŠ¨å¯¼èˆªä»¿æ·˜å®UED - æ‡’äººå»ºç«™</title>
+<meta name="keywords" content="æ»‘åŠ¨å¯¼èˆª" />
+<meta name="description" content="å·¦è¾¹è·Ÿéšé¼ æ ‡æ»‘åŠ¨å¯¼èˆªä»¿æ·˜å®UED" />
+<style>
+/*æ ·å¼è¡¨æ–‡ä»¶æ¥è‡ª æ‡’äººcss http://lrcss.lrjz100.com */
+/*---------é‡ç½®---------*/
+html{font-size: 100%;-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;	*overflow:auto;_overflow-x:hidden;}
+body{margin:0;}
+p,ul,ol,form,dl,h1,h2,h3,h4,h5,h6{ margin-top:0; margin-bottom:0;}
+dl,dd{ margin-left:0;}
+ul,ol{padding-left:0;*margin-left:0;list-style-type: none;}
+ul li{*zoom:1;*vertical-align:bottom;}
+em,var,cite,i{font-style:normal;}
+small{font-size:inherit;}
+s,a{text-decoration:none;}
+:focus{outline:none;}
+blockquote,q{quotes:none; margin:0;}
+table{border-collapse:collapse;border-spacing:0;empty-cells:show;/*table-layout:fixed;*/}
+img,iframe{border:none;}
+img{vertical-align: top;-ms-interpolation-mode: bicubic;/*ie7é˜²æ­¢å›¾ç‰‡ç¼©å°å¤±çœŸçš„*/}
+/*---------ç«–å‘èœå•ï¼ˆéå¿…éœ€ï¼‰---------*/
+.bl-vernav li{ border-bottom:1px solid #ddd; margin-bottom:-1px;padding-top:1px;}
+.bl-vernav a{ display:block; height:20px; line-height:20px; padding:10px 16px;}
+.bl-vernav a:hover{ background:#F8F8F8;text-decoration:none;}
+/*.bl-vernav .cur a{ background:#428BCA; color:#fff;}*/
 
-var map = null;  //ÊµÀı»¯°Ù¶ÈµØÍ¼
-var address = "º£µíÇø¹ú¼ÒÍ¼Êé¹İ";      //ÏêÏ¸µØÖ·
-var lableName = "¹ú¼ÒÍ¼Êé¹İ";        //½¨ÖşÃû³Æ
-var city = "±±¾©";                 //³ÇÊĞ
+.bl-vernav-ord{ border:1px solid #ddd;}
 
-var myGeo = new BMap.Geocoder();   //µØÖ·½âÎöÆ÷
+.vernav-level li li{ border-left:none;border-right:none;}
+.vernav-level li li a{ padding-left:40px;}
+.vernav-level .cur .one{ background:#F8F8F8; 	}
+.vernav-level li .cur a{ background:#F8F8F8;	}
 
-function initMap(){
-	/**
-	 * ¸ù¾İµØÖ·»ñµÃÎ»ÖÃ×ø±ê£¬È»ºóÊµÀı»¯°Ù¶ÈµØÍ¼
-	 */
-	myGeo.getPoint(address, function(point){	
-		
-	  if(point){
-		  map = new BMap.Map("allmap");  //ÊµÀı»¯°Ù¶ÈµØÍ¼
-	      map.enableScrollWheelZoom();          //ÆôÓÃ¹öÂÖ·Å´óËõĞ¡      
-	      map.centerAndZoom(point,15);          //³õÊ¼»¯µØÍ¼,ÉèÖÃÖĞĞÄµã×ø±êºÍµØÍ¼¼¶±ğ¡£
-	      map.addControl(new BMap.NavigationControl());  //Ìí¼ÓÆ½ÒÆËõ·Å¿Ø¼ş
-		  map.addControl(new BMap.OverviewMapControl());  //Ìí¼ÓµØÍ¼ËõÂÔÍ¼¿Ø¼ş      
-	       //´´½¨±ê×¢£¨ÀàËÆ¶¨Î»Ğ¡ºìÆì£©
-		   var marker = new BMap.Marker(point); 
-		   //±ê×¢ÌáÊ¾ÎÄ±¾
-		   var label = new BMap.Label(lableName,{"offset":new BMap.Size(20,-20)});       
-		   marker.setLabel(label); //Ìí¼ÓÌáÊ¾ÎÄ±¾  
-		   //´´½¨ÏûÏ¢¿ò
-		   var infoWindow = new BMap.InfoWindow(address);  
-		   //°ó¶¨±ê×¢µ¥»÷ÊÂ¼ş£¬ÉèÖÃÏÔÊ¾µÄÏûÏ¢¿ò
-		   marker.addEventListener("click",function(){this.openInfoWindow(infoWindow);});
-		   map.addOverlay(marker);  //°Ñ±ê×¢Ìí¼Óµ½µØÍ¼
-	  }
-	}, city);
-}
+/*diy*/
+	.bl-vernav-warp{ position:relative;}
+	.bl-vernav-warp .auxline{ position:absolute; left:-6px; top:0; z-index:1;line-height:0; font-size:0; 
+		border-left:#FF5F3E solid 7px; background-color:#F8F8F8;}
+	.bl-vernav{ position:relative; z-index:2;}
+	.bl-vernav a:hover{ background-color:transparent;}
+	
 
+/*ä¸‹é¢è¿™ä¸¤ç«¯æ˜¯æ¼”ç¤ºç”¨çš„å’Œæ•´ä¸ªåŠŸèƒ½æ²¡æœ‰å¿…ç„¶å…³ç³» ï¼Œä½ å¯ä»¥ä½¿ç”¨ä½ è‡ªå·±çš„ å­—ä½“å­—å·é¢œè‰²è®¾ç½®*/
+.demobox{ width:460px; font-size:14px; color:#333;
+font-family:'Hiragino Sans GB','Microsoft Yahei',"WenQuanYi Micro Hei",SimSun,Tahoma,Arial,Helvetica,STHeiti;}
+a{ color:#333; text-decoration:none;}
+</style>
 
-
-//²éÑ¯¹«½»
-function findPath(){
- var b = document.getElementById("begin").value;  //ÆğÊ¼Î»ÖÃ
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<style type="text/css">
-	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"Î¢ÈíÑÅºÚ";}
-	</style>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
-	<title>µØÍ¼Õ¹Ê¾</title>
 </head>
-<body>
-	<div id="allmap"></div>
-</body>
-</html>
-<script type="text/javascript">
-	// °Ù¶ÈµØÍ¼API¹¦ÄÜ
-	var map = new BMap.Map("allmap");    // ´´½¨MapÊµÀı
-	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // ³õÊ¼»¯µØÍ¼,ÉèÖÃÖĞĞÄµã×ø±êºÍµØÍ¼¼¶±ğ
-	map.addControl(new BMap.MapTypeControl());   //Ìí¼ÓµØÍ¼ÀàĞÍ¿Ø¼ş
-	map.setCurrentCity("±±¾©");          // ÉèÖÃµØÍ¼ÏÔÊ¾µÄ³ÇÊĞ ´ËÏîÊÇ±ØĞëÉèÖÃµÄ
-	map.enableScrollWheelZoom(true);     //¿ªÆôÊó±ê¹öÂÖËõ·Å
+
+<body style="padding:50px;">
+<div class="demobox">
+	<h1 class="h3">ä»¿æ·˜å®UEDçš„å·¦è¾¹è·Ÿéšé¼ æ ‡æ»‘åŠ¨å¯¼èˆª</h1>
+    <br/>
+    <div class="bl-vernav-warp">
+    	<div class="auxline"></div>
+        <ul class="bl-vernav vernav-level">
+            <li><a href="http://www.51xuediannao.com/js/nav/" class="one">å¯¼èˆªèœå•</a></li>
+            <li class="cur">
+                <a href="http://www.51xuediannao.com/js/" class="one">JSä»£ç </a>
+                <ul>
+                    <li><a href="http://www.51xuediannao.com/js/texiao/">ç½‘é¡µç‰¹æ•ˆ</a></li>
+                    <li><a href="http://www.51xuediannao.com/js/gundong/">æ»šåŠ¨ä»£ç </a></li>
+                    <li><a href="http://www.51xuediannao.com/xuanxiangka/">é€‰é¡¹å¡ä»£ç </a></li>
+                </ul>
+            </li>
+            <li><a href="http://www.51xuediannao.com/js/slide/" class="one">ç„¦ç‚¹å¹»ç¯ç‰‡</a></li>
+            <li><a href="http://www.51xuediannao.com/qqkefu/" class="one">qqåœ¨çº¿å®¢æœä»£ç </a></li>
+            <li><a href="http://www.51xuediannao.com/jquery_tanchu/" class="one">jqueryå¼¹å‡ºå±‚</a></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+<script>
+$(function(){
+	var verNav = $(".bl-vernav"),
+		line = verNav.siblings(".auxline")
+		verNavFisrt = verNav.children("li:first-child"),
+		curY = verNav.children("li.cur").position().top;
+		
+	line.height(verNavFisrt.outerHeight()-1).width(verNavFisrt.outerWidth());//è®¾ç½®è¾…åŠ©çº¿åˆå§‹åŒ–é«˜åº¦å’Œå®½åº¦ï¼Œä¹Ÿå¯ä»¥ç›´æ¥ç”¨cssè®¾ç½®å¥½ï¼Œè¿™é‡Œå°±ä¸ç”¨jsè®¡ç®—äº† 
+
+	verNav.find("li").mouseenter(function(){
+		var thisY = $(this).position().top;
+		line.stop(true,true).animate({top:thisY},200);
+		return false
+	})
+	.end()
+	.mouseleave(function(){
+		line.stop(true,true).animate({top:curY},300)	
+	}).trigger("mouseleave");
+});
 </script>
+</body>
+</html> 
