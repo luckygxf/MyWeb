@@ -60,7 +60,7 @@
 <body>
 	<div class="main">
 		<div class="head">
-			添加日志 
+			添加博客 
 		</div>
 		<div class="content">
 			<form action="#">

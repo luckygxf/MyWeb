@@ -6,17 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javassist.bytecode.Descriptor.Iterator;
-
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.gxf.beans.Blog;
+import com.gxf.beans.BlogType;
 import com.gxf.beans.Comment;
 import com.gxf.beans.Tag;
 import com.gxf.dao.BlogDao;
+import com.gxf.dao.BlogTypeDao;
 import com.gxf.dao.CommentDao;
 import com.gxf.dao.TagDao;
 import com.gxf.dao.impl.BlogDaoImp;
+import com.gxf.dao.impl.BlogTypeDaoImp;
 import com.gxf.dao.impl.CommentDaoImp;
 import com.gxf.dao.impl.TagDaoImp;
 import com.gxf.util.Pager;
@@ -34,6 +35,7 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	private BlogDao blogDao = new BlogDaoImp();
 	private TagDao tagDao = new TagDaoImp();
 	private CommentDao commentDao = new CommentDaoImp();
+	private BlogTypeDao blogTypeDao = new BlogTypeDaoImp();
 	
 	private List<Blog> listOfBlog;
 	private Pager pager;
@@ -45,8 +47,10 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	private ByteArrayInputStream imageStream;
 	//客户端提交的校验码
 	private String securityCode;
-	private Map session;	
+	private Map<String, Object> session;	
 	private String verifyCodeIsValide;
+	private BlogType blogType;
+	private List<BlogType> listOfBlogType;
 	
 
 	/**
@@ -175,6 +179,55 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	 * @return
 	 */
 	public String beforeAddBlogType(){
+		//查询已有的博客类型
+		listOfBlogType = blogTypeDao.queryAllBlogType();
+		return SUCCESS;
+	}
+	
+	/**
+	 * 添加博客类型
+	 * @return
+	 */
+	public String addBlogType(){
+		//查询已有的博客类型
+		listOfBlogType = blogTypeDao.queryAllBlogType();
+		//向数据库中添加博客类型
+		blogTypeDao.addBlogType(blogType);
+		//查询已有的博客类型
+		listOfBlogType = blogTypeDao.queryAllBlogType();
+		return SUCCESS;
+	}
+	
+	/**
+	 * 在更新博客类型之前
+	 * @return
+	 */
+	public String beforeUpdateBlogType(){
+		//根据博客类型ID查询博客类型
+		blogType = blogTypeDao.queryBlogById(blogType.getId());
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 更新博客类型
+	 * @return
+	 */
+	public String updateBlogType(){
+		//更新博客类型
+		blogTypeDao.updateBlogType(blogType);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 删除博客类型
+	 * @return
+	 */
+	public String deleteBlogType(){
+		//删除博客类型
+		blogTypeDao.deleteBlogTypeById(blogType.getId());
+		//查询已有的博客类型
+		listOfBlogType = blogTypeDao.queryAllBlogType();
 		return SUCCESS;
 	}
 	
@@ -197,7 +250,7 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	public void setSelectedTagContent(String selectedTagContent) {
 		this.selectedTagContent = selectedTagContent;
 	}
-
+	
 	public void setPager(Pager pager) {
 		this.pager = pager;
 	}
@@ -232,7 +285,7 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	}
 
 	@Override
-	public void setSession(Map session) {
+	public void setSession(Map<String, Object> session) {
 		this.session = session;
 		
 	}
@@ -245,7 +298,7 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 		this.securityCode = securityCode;
 	}
 
-	public Map getSession() {
+	public Map<String, Object> getSession() {
 		return session;
 	}
 
@@ -255,6 +308,22 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 
 	public void setVerifyCodeIsValide(String verifyCodeIsValide) {
 		this.verifyCodeIsValide = verifyCodeIsValide;
+	}
+
+	public BlogType getBlogType() {
+		return blogType;
+	}
+
+	public void setBlogType(BlogType blogType) {
+		this.blogType = blogType;
+	}
+
+	public List<BlogType> getListOfBlogType() {
+		return listOfBlogType;
+	}
+
+	public void setListOfBlogType(List<BlogType> listOfBlogType) {
+		this.listOfBlogType = listOfBlogType;
 	}	
 	
 	

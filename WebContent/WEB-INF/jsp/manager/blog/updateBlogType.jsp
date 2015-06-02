@@ -90,48 +90,25 @@
 		}
 		
 		form1.submit();
-		alert("添加成功!");
+		alert("更新成功!");
 	}
 </script>
 </head>
 <body>
 	<div class="main">
-		<div>
-			<div class="head">
-				EDIT CATEGORIES
-			</div>
-			<div class="listOfBlogType">
-				<table class="Listing">
-					<tr class="Header">
-						<td>Category</td>
-						<td>Comment</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<s:iterator value="listOfBlogType" id="blogType">
-						<tr>
-							<td><s:property value="#blogType.name"/></td>
-							<td><s:property value="#blogType.comment"/></td>
-							<td><a href="blog/beforeUpdateBlogTypeAction?blogType.id=<s:property value="#blogType.id"/>">Edit</a></td>
-							<td><a href="blog/deleteBlogTypeAction?blogType.id=<s:property value="#blogType.id"/>">Delete</a></td>
-						</tr>						
-					</s:iterator>
-				</table>
-				
-			</div>
-		</div>
 		<div class="head">
-			添加博客类型
+			编辑博客类型
 		</div>
 		<div class="Edit">
-			<form action="blog/addBlogTypeAction" method="post" name="form1">
+			<form action="blog/updateBlogTypeAction" method="post" name="form1">
 				Title<br>
-				<input type="text" style="width: 350px;" name="blogType.name" id="name"/><br>
+				<input type="text" style="width: 350px;" name="blogType.name" value="<s:property value="blogType.name"/>" id="name"/><br>
 				Description<br>
-				<textarea rows="5" cols="20" style="width: 350px;" name="blogType.comment" id="comment"></textarea>
+				<textarea rows="5" cols="20" style="width: 350px;" name="blogType.comment"  id="comment"><s:property value="blogType.name"/></textarea>
 				<div class="post_block">
-					<input type="button" value="ADD" class="Button" onclick="checkAndSubmit()"/>
+					<input type="button" value="UPDATE" class="Button" onclick="checkAndSubmit()"/>
 				</div>
+				<input type="hidden" name="blogType.id" value="<s:property value="blogType.id"/>"/>
 			</form>
 		</div>
 	</div>

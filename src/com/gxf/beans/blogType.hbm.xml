@@ -13,6 +13,9 @@
 		<property name="name" type="string">
 			<column name="name" length="50"/>
 		</property>
+		<property name="comment" type="string">
+			<column name="comment" length="255"/>
+		</property>
 		<set name="blogs" lazy="true" table="blog">
 			<key column="blogTypeId"/>
 			<one-to-many class="com.gxf.beans.Blog"/>

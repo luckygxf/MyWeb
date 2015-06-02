@@ -58,6 +58,23 @@
     		<result name="success">/WEB-INF/jsp/manager/blog/addBlogType.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
+    	<action name="addBlogTypeAction" class="com.gxf.action.BlogAction" method="addBlogType">
+    		<result name="success">/WEB-INF/jsp/manager/blog/addBlogType.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="beforeUpdateBlogTypeAction" class="com.gxf.action.BlogAction" method="beforeUpdateBlogType">
+    		<result name="success">/WEB-INF/jsp/manager/blog/updateBlogType.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="updateBlogTypeAction" class="com.gxf.action.BlogAction" method="updateBlogType">
+    		<result name="success">/WEB-INF/jsp/manager/blog/updateBlogType.jsp</result>
+            <result name="input">/failed.jsp</result>
+            <result name="error">/failed.jsp</result>
+    	</action>
+    	<action name="deleteBlogTypeAction" class="com.gxf.action.BlogAction" method="deleteBlogType">
+    		<result name="success">/WEB-INF/jsp/manager/blog/addBlogType.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
     </package>
     
     <!-- Photo对应的action -->
