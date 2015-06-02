@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-<title>管理员首页</title>
+<title>系统管理员</title>
 </head>
 	<frameset rows="17%, 83%">
 		<frame src="manager/getTopInfoAction" name="topFrame" noresize="noresize" scrolling="no"

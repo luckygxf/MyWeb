@@ -103,8 +103,8 @@
 					<s:property value="#blogIndex.id"/>"><s:property value="#blogIndex.title"/>(<s:property value="#blogIndex.publishTime"/>)</a></td>
 					<td><s:property value="#blogIndex.comments.size()"/></td>
 					<td><s:property value="#blogIndex.readCount"/></td>
-					<td><a href="#">编辑</a></td>
-					<td><a href="#">删除</a></td>
+					<td><a href="blog/beforeUpdateBlogAction?blog.id=<s:property value="#blogIndex.id"/>">编辑</a></td>
+					<td><a href="blog/deleteBlogAction?blog.id=<s:property value="#blogIndex.id"/>">删除</a></td>
 				</tr>
 			</s:iterator>
 		</table>

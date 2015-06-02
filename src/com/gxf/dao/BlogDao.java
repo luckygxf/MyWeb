@@ -37,4 +37,16 @@ public interface BlogDao {
 	 * @return
 	 */
 	public Blog queryBlogById(int id);
+	
+	/**
+	 * 更新博客
+	 * @param blog
+	 */
+	public void updateBlog(Blog blog);
+	
+	/**
+	 * 根据id删除博客
+	 * @param id
+	 */
+	public void deleteBlogById(int id);
 }

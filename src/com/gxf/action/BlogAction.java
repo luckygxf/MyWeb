@@ -265,6 +265,62 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 更新博客之前初始化
+	 * @return
+	 */
+	public String beforeUpdateBlog(){
+		//查询博客信息
+		int blogId = blog.getId();
+		blog = blogDao.queryBlogById(blogId);
+		
+		//查询所有的博客分类
+		listOfBlogType = blogTypeDao.queryAllBlogType();
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 更新博客
+	 * @return
+	 */
+	public String updateBlog(){
+		//处理标签，如果数据库中没有的标签添加到数据库中
+		String namesOfTag[] = tagStr.split(",");
+		for(int i = 0; i < namesOfTag.length; i++){
+			if(tagDao.queryTagByContent(namesOfTag[i]) == null)
+			{
+				Tag temp = new Tag();
+				temp.setContent(namesOfTag[i]);
+				tagDao.addTag(temp);
+			}
+		}
+		blogDao.deleteBlogById(blog.getId());
+		//标签添加到博客中
+		for(int i = 0; i < namesOfTag.length; i++){
+			Tag temp = tagDao.queryTagByContent(namesOfTag[i]);
+			blog.getTags().add(temp);
+		}
+		
+		//查询所有的博客分类
+		listOfBlogType = blogTypeDao.queryAllBlogType();
+		//添加博客到数据库
+		blogDao.addBlog(blog);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 删除博客
+	 * @return
+	 */
+	public String deleteBlog(){
+		//删除博客
+		blogDao.deleteBlogById(blog.getId());
+		//查询所有的博客
+		listOfBlog = blogDao.queryAllBlog();
+		return SUCCESS;
+	}
+	
 	public List<Blog> getListOfBlog() {
 		return listOfBlog;
 	}

@@ -141,4 +141,34 @@ public class BlogDaoImp implements BlogDao {
 		return blog;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.gxf.dao.BlogDao#updateBlog(com.gxf.beans.Blog)
+	 */
+	@Override
+	public void updateBlog(Blog blog) {
+		Session session = baseDao.getSession();
+		
+		session.beginTransaction();
+		session.update(blog);
+		
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.gxf.dao.BlogDao#deleteBlogById(int)
+	 */
+	@Override
+	public void deleteBlogById(int id) {
+		Session session = baseDao.getSession();
+		
+		session.beginTransaction();
+		Blog temp = queryBlogById(id);
+		session.delete(temp);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+
 }

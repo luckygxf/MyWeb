@@ -25,7 +25,7 @@
 		<property name="readCount" type="integer">
 			<column name="readCount" />
 		</property>
-		<set name="tags" table="blogtag" cascade="all" lazy="false" >
+		<set name="tags" table="blogtag" cascade="all" lazy="false" inverse="false">
 			<key column="blogId"/>
 			<many-to-many class="com.gxf.beans.Tag" column="tagId"/>
 		</set>

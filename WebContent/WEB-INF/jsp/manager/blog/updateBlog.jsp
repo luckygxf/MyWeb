@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加博客</title>
+
 <style type="text/css">
 	.head{
 		font-size: 105%;
@@ -92,7 +93,7 @@
 		}
 		
 		form1.submit();
-		alert("添加博客成功!");
+		alert("更新博客成功!");
 	}
 </script>
 </head>
@@ -102,11 +103,12 @@
 			添加博客 
 		</div>
 		<div class="content">
-			<form action="blog/addBlogAction" method="post" name="form1">
+			<form action="blog/updateBlogAction" method="post" name="form1">
 				<b>标题</b>
-				<input type="text" maxlength="200" style="width: 99%;" name="blog.title" id="title"><br>
+				<input type="text" maxlength="200" style="width: 99%;" name="blog.title" id="title" value="<s:property value="blog.title"/>"><br>
 				<b>内容</b><br>
-				<textarea rows="20" cols="200" name="blog.content" id="content"></textarea><br>
+				<textarea rows="20" cols="200" name="blog.content" id="content"><s:property value="blog.content"/>
+				</textarea><br>
 				<div class="head">
 					<span >分类</span><br>					
 				</div>
@@ -114,7 +116,8 @@
 					<table id="Editor_Edit_APOptions_Advancedpanel1_cklCategories" style="width: 95%;">
 						<s:iterator value="listOfBlogType" id="blogType" status="st">
 							<s:if test="%{#st.count%5}==0"><tr></s:if>
-							<td><input type="radio" name="blog.blogType.id" value="<s:property value="#blogType.id"/>"/>
+							<td><input type="radio" name="blog.blogType.id" value="<s:property value="#blogType.id"/>"
+								<s:if test="#blogType.name==blog.blogType.name">checked=true</s:if>/>
 							<s:property value="#blogType.name"/>
 							</td>							
 							<s:if test="#st.count%5==0"></tr></s:if>
@@ -124,9 +127,10 @@
 				<div class="head">
 					<span >标签(多个关键字之间用","分隔，)</span><br>				
 				</div>
-				<input type="text" maxlength="100" style="width: 99%;" name="tagStr"/><br>
+				<input type="text" maxlength="100" style="width: 99%;" name="tagStr"
+					value="<s:iterator value="blog.tags" id="tag" status="st"><s:if test="#st.Last"><s:property value="#tag.content"/></s:if><s:else><s:property value="#tag.content"/>,</s:else></s:iterator>" /><br>
 				<div class="post_block">
-					<input type="button" value="发布" onclick="checkAndSubmit()" class="Button"/>
+					<input type="button" value="更新" onclick="checkAndSubmit()" class="Button"/>
 				</div>
 			</form>
 		</div>
