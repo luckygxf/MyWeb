@@ -75,6 +75,10 @@
 			<div class="cont">
 				<s:property value="blog.content"/>
 			</div>
+			<p>
+				分类：<br>
+				<s:property value="blog.blogType.name"/>
+			</p>
 			<p>标签: 
 				<s:iterator value="tags" id="val">
 					<a href="blog/queryBlogByTag?selectedTagContent=<s:property value="#val.content"/>"><s:property value="#val.content"/></a>

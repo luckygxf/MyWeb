@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class Blog {
 	private int readCount;
 //	private List<Comment> comments = new ArrayList<Comment>();
 	private Set<Comment> comments;
-	private Set<Tag> tags;
+	private Set<Tag> tags = new HashSet<Tag>();
 	private BlogType blogType;
 
 	public int getReadCount() {

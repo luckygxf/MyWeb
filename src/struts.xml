@@ -54,6 +54,10 @@
     		<result name="success">/WEB-INF/jsp/manager/blog/addBlog.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
+    	<action name="addBlogAction" class="com.gxf.action.BlogAction" method="addBlog">
+    		<result name="success">/WEB-INF/jsp/manager/blog/addBlog.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
     	<action name="beforeAddBlogTypeAction" class="com.gxf.action.BlogAction" method="beforeAddBlogType">
     		<result name="success">/WEB-INF/jsp/manager/blog/addBlogType.jsp</result>
             <result name="input">/failed.jsp</result>
@@ -73,6 +77,14 @@
     	</action>
     	<action name="deleteBlogTypeAction" class="com.gxf.action.BlogAction" method="deleteBlogType">
     		<result name="success">/WEB-INF/jsp/manager/blog/addBlogType.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name = "blogListAction" class = "com.gxf.action.BlogAction" method="queryBlogs">
+    		<result name="success">/WEB-INF/jsp/manager/blog/blogList.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name = "queryBlogDetailActionForManager" class="com.gxf.action.BlogAction" method="queryBlogDetail">
+    		<result name="success">/WEB-INF/jsp/manager/blog/queryBlogDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>

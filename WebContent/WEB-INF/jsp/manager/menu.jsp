@@ -172,7 +172,7 @@ a {
 					<ul>
 						<li><a href="<%=basePath %>/blog/beforeAddBlogTypeAction" class="one" target="mainFrame">添加分类</a></li>	
 	                    <li><a href="<%=basePath %>/blog/beforeAddBlogAction" class="one" target="mainFrame">添加博客</a></li>
-	                    <li><a href="#">查询博客</a></li>	                   
+	                    <li><a href="<%=basePath %>/blog/blogListAction" class="one" target="mainFrame">查询博客</a></li>	                   
                 	</ul>
 				</li>
 				<li><a href="#" class="one">相片管理</a></li>

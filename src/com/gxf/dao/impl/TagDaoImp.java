@@ -60,7 +60,11 @@ public class TagDaoImp implements TagDao {
 		query.setString(0, content);
 		
 		Tag result = new Tag();
-		result = (Tag) query.list().get(0);
+		List<Tag> listOfTag = query.list();
+		if(listOfTag == null || listOfTag.size() == 0)
+			result = null;
+		else
+			result = (Tag) query.list().get(0);
 		
 		
 		session.getTransaction().commit();

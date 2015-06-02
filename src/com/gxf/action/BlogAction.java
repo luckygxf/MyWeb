@@ -51,7 +51,7 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	private String verifyCodeIsValide;
 	private BlogType blogType;
 	private List<BlogType> listOfBlogType;
-	
+	private String tagStr;
 
 	/**
 	 * 获取所有的博客
@@ -171,6 +171,40 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 	 * @return
 	 */
 	public String beforeAddBlog(){
+		//查询所有的博客分类
+		listOfBlogType = blogTypeDao.queryAllBlogType();
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 添加博客
+	 * @return
+	 */
+	public String addBlog(){
+		//获取用户
+		String username = (String) session.get("accountName");
+		blog.setAuthor(username);
+		//处理标签，如果数据库中没有的标签添加到数据库中
+		String namesOfTag[] = tagStr.split(",");
+		for(int i = 0; i < namesOfTag.length; i++){
+			if(tagDao.queryTagByContent(namesOfTag[i]) == null)
+			{
+				Tag temp = new Tag();
+				temp.setContent(namesOfTag[i]);
+				tagDao.addTag(temp);
+			}
+		}
+		//标签添加到博客中
+		for(int i = 0; i < namesOfTag.length; i++){
+			Tag temp = tagDao.queryTagByContent(namesOfTag[i]);
+			blog.getTags().add(temp);
+		}
+		
+		//查询所有的博客分类
+		listOfBlogType = blogTypeDao.queryAllBlogType();
+		//添加博客到数据库
+		blogDao.addBlog(blog);
 		return SUCCESS;
 	}
 	
@@ -324,6 +358,14 @@ public class BlogAction extends ActionSupport implements  SessionAware{
 
 	public void setListOfBlogType(List<BlogType> listOfBlogType) {
 		this.listOfBlogType = listOfBlogType;
+	}
+
+	public String getTagStr() {
+		return tagStr;
+	}
+
+	public void setTagStr(String tagStr) {
+		this.tagStr = tagStr;
 	}	
 	
 	

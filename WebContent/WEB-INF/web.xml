@@ -25,4 +25,14 @@
     	<session-timeout>5</session-timeout>
 	</session-config>
 	
+	<!-- 404 -->
+	<error-page>
+		 <error-code>404</error-code>
+		 <location>/PageNotFound.jsp</location>
+	</error-page>
+	<!-- 500 -->
+	<error-page>
+		 <error-code>500</error-code>
+		 <location>/error.jsp</location>
+	</error-page>
 </web-app>
