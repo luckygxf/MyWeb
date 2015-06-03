@@ -127,6 +127,19 @@
     		<result name="success">/WEB-INF/jsp/photo/photoDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
+    	<!-- 后台管理 -->
+    	<action name="photoActionForManager" class="com.gxf.action.PhotoAction" method="getAllPhotoAlbum">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoAlbum.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="queryPhotoListActionForManager" class="com.gxf.action.PhotoAction" method="queryPhotoList">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoList.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="queryPhotoDetailActionForManager" class="com.gxf.action.PhotoAction" method="queryPhotoDeatil">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoDetail.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
     </package>
     <!-- resource对应的action -->
     <package name="resource" namespace="/resource" extends="struts-default">

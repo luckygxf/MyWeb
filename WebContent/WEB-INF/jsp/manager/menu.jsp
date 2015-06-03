@@ -175,7 +175,12 @@ a {
 	                    <li><a href="<%=basePath %>/blog/blogListAction" class="one" target="mainFrame">查询博客</a></li>	                   
                 	</ul>
 				</li>
-				<li><a href="#" class="one">相片管理</a></li>
+				<li><a href="#" class="one">相片管理</a>
+					<ul>
+						<li><a href="#" class="one">创建相册</a></li>
+						<li><a href="<%=basePath %>/photo/photoActionForManager" class="one" target="mainFrame">上传相片</a></li>
+                	</ul>
+				</li>
 				<li><a href="#"
 					class="one">资源管理</a></li>
 			</ul>
