@@ -103,12 +103,11 @@
 			添加博客 
 		</div>
 		<div class="content">
-			<form action="blog/updateBlogAction" method="post" name="form1">
+			<form action="blog/updateBlogAction?blog.id=<s:property value="blog.id"/>" method="post" name="form1">
 				<b>标题</b>
 				<input type="text" maxlength="200" style="width: 99%;" name="blog.title" id="title" value="<s:property value="blog.title"/>"><br>
 				<b>内容</b><br>
-				<textarea rows="20" cols="200" name="blog.content" id="content"><s:property value="blog.content"/>
-				</textarea><br>
+				<textarea rows="20" cols="200" name="blog.content" id="content"><s:property value="blog.content"/></textarea><br>
 				<div class="head">
 					<span >分类</span><br>					
 				</div>

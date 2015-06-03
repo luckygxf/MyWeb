@@ -24,12 +24,14 @@ import com.gxf.dao.impl.TagDaoImp;
 public class Test {
 
 	public static void main(String[] args) {
-		AccountDao accountDao = new AccountDaoImp();
-		Account account = new Account();
-		account.setLoginId("admin");
-		account.setPassword("admin");
+		Set<Tag> setOfTag = new HashSet<Tag>();
+		Tag tag = new Tag();
+		tag.setContent("c");
+		Tag tag2 = new Tag();
+		tag2.setContent("c");
 		
-		System.out.println(accountDao.validAccount(account));
+		setOfTag.add(tag);
+		System.out.println(setOfTag.contains(tag2));
 	}
 
 }

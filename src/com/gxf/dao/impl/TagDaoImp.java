@@ -59,7 +59,7 @@ public class TagDaoImp implements TagDao {
 		Query query = session.createQuery(hql);
 		query.setString(0, content);
 		
-		Tag result = new Tag();
+		Tag result = null;
 		List<Tag> listOfTag = query.list();
 		if(listOfTag == null || listOfTag.size() == 0)
 			result = null;

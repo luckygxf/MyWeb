@@ -23,7 +23,7 @@ public class BlogDaoImp implements BlogDao {
 		Session session = baseDao.getSession();
 		//开启事务 
 		session.beginTransaction();
-		
+		session.clear();
 		//保存博客
 		session.save(blog);
 		
