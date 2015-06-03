@@ -24,6 +24,9 @@ public class ManagerAction extends ActionSupport implements SessionAware{
 	 * @return
 	 */
 	public String login(){
+		if(session.get("accountName") != null){
+			return SUCCESS;
+		}
 		if(accountDao.validAccount(account))
 		{
 			//将用户信息放到session中

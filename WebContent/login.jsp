@@ -3,6 +3,7 @@
 
 <%
 	String basePath = request.getContextPath();
+	System.out.println(session.getAttribute("accountName") + "in jsp");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -53,7 +54,12 @@
 	}
 	function validAccount(){
 		var isValid = "<%=session.getAttribute("isValid") %>";
-	
+		var accountName = "<%=session.getAttribute("accountName") %>"
+		alert(accountName);
+		if(accountName != "null"){
+			managerInfoForm.submit();
+		}
+		
 		if(!isValid && isValid != ""){
 			alert("用户名和密码不正确!");
 			return false;
