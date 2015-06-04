@@ -23,4 +23,16 @@ public interface PhotoAlbumDao {
 	 * @return
 	 */
 	public List<PhotoAlbum> queryAllPhotoAlbum();
+	
+	/**
+	 * 添加相册信息
+	 * @param photoAlbum
+	 */
+	public void addPhotoAlbum(PhotoAlbum photoAlbum);
+	
+	/**
+	 * 根据相册id删除相册
+	 * @param id
+	 */
+	public void deletePhotoAlbum(int id);
 }

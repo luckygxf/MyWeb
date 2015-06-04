@@ -1,8 +1,12 @@
 package com.gxf.util;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 工具类
@@ -11,7 +15,9 @@ import java.security.NoSuchAlgorithmException;
  *
  */
 public class Util {
-
+	public static final String PROJECT_NAME="MyWeb";
+	public static final String PHOTO_DIRECTION = "photos";
+	
 	/**
 	 * 将字符串转换成utf-8格式的
 	 * 
@@ -102,5 +108,36 @@ public class Util {
 		// 字符数组组合成字符串返回
 		return new String(resultCharArray);
 
+	}
+	
+	/**
+	 * 获取当前时间戳
+	 * @return
+	 */
+	public Timestamp getCurrentTimestamp(){
+		//生成相册创建时间
+		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		String dateStr = sd.format(date);
+		
+		return Timestamp.valueOf(dateStr);
+	}
+	
+	/**
+     * 递归删除文件
+     * @param fileToDelete
+     */
+    public  void deleteFile(File fileToDelete){
+		File filesInFile[] = fileToDelete.listFiles();
+		if(filesInFile == null)						//不是文件夹直接删除
+			fileToDelete.delete();
+		else{										//是文件夹
+			for(File elementFile : filesInFile){	//递归删除，子文件
+				deleteFile(elementFile);
+			}//for
+			
+			//删除文件
+			fileToDelete.delete();
+		}
 	}
 }

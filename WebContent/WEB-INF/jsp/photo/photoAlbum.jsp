@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri ="/struts-tags" prefix ="s" %>
+<%
+	String basePath = request.getContextPath();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +13,7 @@
 		min-height:300px;
 		padding:10px 30px;
 		margin:10px;
-	    background:#e1e0cc;
+
 	}
 	
 	.photo .div_ph{
@@ -32,6 +35,10 @@
 		width: 180px;
 		height: 150px;
 	}
+	.photo .ph_dl, .photo .pic_dl {
+		float: left;
+		margin: 15px 5px;
+	}
 </style>
 <title>我的相册</title>
 </head>
@@ -46,7 +53,7 @@
 				<dd>
 					<p class="photo_bg">
 						<a href="photo/queryPhotoListAction?photoAlbumId=<s:property value="#photoAlbum.id"/>">
-							<img alt="显示相片" src="<s:property value="#photoAlbum.backgroundPhotoPath"/>">
+							<img alt="显示相片" src="<s:if test="#photoAlbum.photos.size()==0"><%=basePath %>/image/Nophoto.png</s:if><s:else><s:property value="#photoAlbum.backgroundPhotoPath"/></s:else>"/>
 						</a>
 					</p>
 				</dd>

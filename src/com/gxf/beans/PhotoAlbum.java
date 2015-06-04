@@ -17,6 +17,7 @@ public class PhotoAlbum {
 	private String backgroundPhotoPath;
 	private Set<Photo> photos;
 	private String path;
+	private String comment;
 	
 	public PhotoAlbum(){
 		//生成相册创建时间
@@ -67,6 +68,14 @@ public class PhotoAlbum {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 }

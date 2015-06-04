@@ -159,7 +159,11 @@ a {
 	text-decoration: none;
 }
 </style>
-
+<script type="text/javascript">
+	function exitSystem(){
+		window.parent.location.href="<%=basePath %>/manager/loginOutAction";
+	}
+</script>
 </head>
 
 <body style="padding: 5px;">
@@ -177,13 +181,13 @@ a {
 				</li>
 				<li><a href="#" class="one">相片管理</a>
 					<ul>
-						<li><a href="#" class="one">创建相册</a></li>
+						<li><a href="<%=basePath %>/photo/toCreatePhotoAlbumAction" class="one" target="mainFrame">创建相册</a></li>
 						<li><a href="<%=basePath %>/photo/photoActionForManager" class="one" target="mainFrame">上传相片</a></li>
                 	</ul>
 				</li>
 				<li><a href="#"	class="one">资源管理</a></li>
 				<li><a href="<%=basePath %>/manager/getClientInfoAction" class="one" target="mainFrame">客户端信息</a></li>
-				<li><a href="<%=basePath %>/manager/loginOutAction"	class="one">退出系统</a></li>
+				<li><a href="javascript:exitSystem()"	class="one">退出系统</a></li>
 			</ul>
 		</div>
 	</div>

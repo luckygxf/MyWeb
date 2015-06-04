@@ -21,6 +21,9 @@
 		<property name="backgroundPhotoPath" type="string">
 			<column name="backgroundPhotoPath" length="60"/>
 		</property>
+		<property name="comment" type="string">
+			<column name="comment" length="100"/>
+		</property>
 		<set name="photos" table="Photo" cascade="delete" lazy="false" order-by="uploadTime asc">
 			<key column="albumId"/>
 			<one-to-many class="com.gxf.beans.Photo" />

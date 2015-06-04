@@ -140,6 +140,18 @@
     		<result name="success">/WEB-INF/jsp/manager/photo/photoDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
+    	<action name="toCreatePhotoAlbumAction" class="com.gxf.action.PhotoAction" method="toCreatePhotoAlbum">
+    		<result name="success">/WEB-INF/jsp/manager/photo/createPhotoAlbum.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="createPhotoAlbumAction" class="com.gxf.action.PhotoAction" method="createPhotoAlbum">
+    		<result name="success">/WEB-INF/jsp/manager/photo/createPhotoAlbum.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="deletePhotoAlbumAction" class="com.gxf.action.PhotoAction" method="deletePhotoAlbum">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoAlbum.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
     </package>
     <!-- resource对应的action -->
     <package name="resource" namespace="/resource" extends="struts-default">

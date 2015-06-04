@@ -79,8 +79,8 @@
 </style>
 <script type="text/javascript">
 	function checkAndSubmit(){
-		var title=document.getElementById("title");
-		var content=document.getElementById("content");
+		var title=document.getElementById("title").value;
+		var content=document.getElementById("content").value;
 		
 		if(!title || title==""){
 			alert("请填写博客标题!");
