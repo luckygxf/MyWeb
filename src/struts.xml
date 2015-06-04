@@ -190,6 +190,10 @@
     		<result name="login">/login.jsp</result>
             <result name="input">/WEB-INF/jsp/error.jsp</result>
     	</action>
+    	<action name = "loginOutAction" class="com.gxf.action.ManagerAction" method="loginOut">
+    		<result name="success">/login.jsp</result>
+            <result name="input">/WEB-INF/jsp/error.jsp</result>
+    	</action>
     	<action name="getTopInfoAction" class="com.gxf.action.ManagerAction" method="getTopInfoAction">
     		<result name="success">/WEB-INF/jsp/manager/top.jsp</result>
             <result name="input">/WEB-INF/jsp/error.jsp</result>
@@ -200,6 +204,10 @@
     	</action>
     	<action name="getMainAction" class="com.gxf.action.ManagerAction" method="getMainAction">
     		<result name="success">/WEB-INF/jsp/manager/main.jsp</result>
+            <result name="input">/WEB-INF/jsp/error.jsp</result>
+    	</action>
+    	<action name="getClientInfoAction" class="com.gxf.action.SystemInfoAction" method="getClientInfoAction">
+    		<result name="success">/WEB-INF/jsp/manager/clientInfo.jsp</result>
             <result name="input">/WEB-INF/jsp/error.jsp</result>
     	</action>
     </package>

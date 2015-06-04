@@ -181,8 +181,9 @@ a {
 						<li><a href="<%=basePath %>/photo/photoActionForManager" class="one" target="mainFrame">上传相片</a></li>
                 	</ul>
 				</li>
-				<li><a href="#"
-					class="one">资源管理</a></li>
+				<li><a href="#"	class="one">资源管理</a></li>
+				<li><a href="<%=basePath %>/manager/getClientInfoAction" class="one" target="mainFrame">客户端信息</a></li>
+				<li><a href="<%=basePath %>/manager/loginOutAction"	class="one">退出系统</a></li>
 			</ul>
 		</div>
 	</div>

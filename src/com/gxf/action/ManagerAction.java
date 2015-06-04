@@ -2,6 +2,11 @@ package com.gxf.action;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.fileupload.servlet.ServletRequestContext;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.dispatcher.ng.servlet.ServletHostConfig;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.gxf.beans.Account;
@@ -24,6 +29,7 @@ public class ManagerAction extends ActionSupport implements SessionAware{
 	 * @return
 	 */
 	public String login(){
+		System.out.println("sessioinId = " + session.size());
 		if(session.get("accountName") != null){
 			return SUCCESS;
 		}
@@ -31,6 +37,8 @@ public class ManagerAction extends ActionSupport implements SessionAware{
 		{
 			//将用户信息放到session中
 			session.put("accountName", account.getLoginId());
+			HttpServletRequest request = ServletActionContext.getRequest ();
+			request.getSession().setAttribute("accountName", account.getLoginId());
 			return SUCCESS;
 		}
 		
@@ -44,6 +52,18 @@ public class ManagerAction extends ActionSupport implements SessionAware{
 	 * @return
 	 */
 	public String getTopInfoAction(){
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 退出系统
+	 * @return
+	 */
+	public String loginOut(){
+		//清空session
+		session.clear();
+		session = null;
 		
 		return SUCCESS;
 	}
