@@ -75,6 +75,7 @@
 		min-height:390px;
 	}
 </style>
+<link href="/MyWeb/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
 	function getNextImage(photoId, photoAlbumId){
 		location.href="photo/queryPhotoNextAction?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;

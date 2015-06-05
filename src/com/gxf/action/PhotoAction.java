@@ -53,6 +53,12 @@ public class PhotoAction extends ActionSupport implements ServletRequestAware{
 	private Util util = new Util();
 	private HttpServletRequest request;
 	
+	//上传文件
+	private File upload;
+	private String uploadFileName;
+	private String uploadContentType;
+	private Photo uploadPhoto;
+	
 	
 	/**
 	 * 获取所有的相册
@@ -204,12 +210,40 @@ public class PhotoAction extends ActionSupport implements ServletRequestAware{
 		photoAlbumDao.deletePhotoAlbum(photoAlbum.getId());
 		//删除相册文件夹
 		String projectPathInserver = request.getSession().getServletContext().getRealPath("/");
-		System.out.println("projectPathInserver = " + projectPathInserver + Util.PHOTO_DIRECTION + File.separator + photoAlbum.getName());
+		//System.out.println("projectPathInserver = " + projectPathInserver + Util.PHOTO_DIRECTION + File.separator + photoAlbum.getName());
 		File photoAlbumDicFile = new File(projectPathInserver + Util.PHOTO_DIRECTION + File.separator + photoAlbum.getName());
 		util.deleteFile(photoAlbumDicFile);
 		
 		//从数据库中获取相册信息
 		this.listOfPhotoAlbum = photoAlbumDao.queryAllPhotoAlbum();
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 上传相片
+	 * @return
+	 */
+	public String uploadPhoto(){
+		//查询相册信息
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
+		
+		//1.写入相片信息到数据库
+		//2.将相片写到文件夹中
+		
+		//将相片信息写入到数据库中
+		uploadPhoto.setUploadTime(util.getCurrentTimestamp());
+		
+		return SUCCESS;
+	}
+	
+	/**
+	 * 跳转到上传页面
+	 * @return
+	 */
+	public String toUploadPhoto(){
+		//查询出相册信息
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
 		
 		return SUCCESS;
 	}
@@ -266,6 +300,38 @@ public class PhotoAction extends ActionSupport implements ServletRequestAware{
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 		
+	}
+
+	public File getUpload() {
+		return upload;
+	}
+
+	public void setUpload(File upload) {
+		this.upload = upload;
+	}
+
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public String getUploadContentType() {
+		return uploadContentType;
+	}
+
+	public void setUploadContentType(String uploadContentType) {
+		this.uploadContentType = uploadContentType;
+	}
+
+	public Photo getUploadPhoto() {
+		return uploadPhoto;
+	}
+
+	public void setUploadPhoto(Photo uploadPhoto) {
+		this.uploadPhoto = uploadPhoto;
 	}
 
 //	public int getScrollStartIndex() {

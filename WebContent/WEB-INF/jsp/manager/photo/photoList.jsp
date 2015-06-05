@@ -33,6 +33,12 @@
 		clear:both;
 	}
 </style>
+<link href="/MyWeb/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+	function toUploadPhoto(photoAlbumId){
+		window.location.href="photo/toUploadPhotoAction?photoAlbum.id="+photoAlbumId;
+	}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>相册展示</title>
 </head>
@@ -47,7 +53,8 @@
 				</p>
 				<p>
 					<span class="span_to"><s:property value="photoAlbum.photos.size()"/>张相片 | 创建于 <s:property value="photoAlbum.createTime"/></span>
-					<input type="button" value="上传图片"/>
+					<input type="button" value="上传相片" class="btn btn-primary" onclick="toUploadPhoto(<s:property value="photoAlbum.id"/>)"/>
+	
 				</p>
 			</div>
 			<!-- content -->
