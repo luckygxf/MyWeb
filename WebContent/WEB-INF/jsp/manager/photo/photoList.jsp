@@ -48,7 +48,7 @@
 			<!-- head -->
 			<div class="div_ph">
 				<p>
-					<a href="photo/photoAction">我的相册>></a>
+					<a href="photo/photoActionForManager">我的相册>></a>
 					<s:property value="photoAlbum.name"/>>>
 				</p>
 				<p>

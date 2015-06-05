@@ -153,11 +153,31 @@
             <result name="input">/failed.jsp</result>
     	</action>
     	<action name="uploadPhotoAction" class="com.gxf.action.PhotoAction" method="uploadPhoto">
-    		<result name="success">/WEB-INF/jsp/manager/photo/photoList.jsp</result>
+    		<result name="success">/WEB-INF/jsp/manager/photo/uploadPhoto.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     	<action name="toUploadPhotoAction" class="com.gxf.action.PhotoAction" method="toUploadPhoto">
     		<result name="success">/WEB-INF/jsp/manager/photo/uploadPhoto.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="photoActionForManager" class="com.gxf.action.PhotoAction" method="getAllPhotoAlbum">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoAlbum.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="queryPhotoListActionForManager" class="com.gxf.action.PhotoAction" method="queryPhotoList">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoList.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="queryCurPhotoPreActionForManager" class="com.gxf.action.PhotoAction" method="queryCurPhoto">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoDetail.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="queryPhotoNextActionForManager" class="com.gxf.action.PhotoAction" method="queryPhotoNext">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoDetail.jsp</result>
+            <result name="input">/failed.jsp</result>
+    	</action>
+    	<action name="queryPhotoPreActionForManager" class="com.gxf.action.PhotoAction" method="queryPhotoPre">
+    		<result name="success">/WEB-INF/jsp/manager/photo/photoDetail.jsp</result>
             <result name="input">/failed.jsp</result>
     	</action>
     </package>

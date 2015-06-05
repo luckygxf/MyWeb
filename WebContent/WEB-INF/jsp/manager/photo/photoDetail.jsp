@@ -78,11 +78,11 @@
 <link href="/MyWeb/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
 	function getNextImage(photoId, photoAlbumId){
-		location.href="photo/queryPhotoNextAction?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;
+		location.href="photo/queryPhotoNextActionForManager?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;
 	}
 	
 	function getPreImage(photoId, photoAlbumId){
-		location.href="photo/queryPhotoPreAction?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;
+		location.href="photo/queryPhotoPreActionForManager?curPhoto.id=" + photoId + "&photoAlbum.id=" + photoAlbumId;
 	}
 </script>
 </head>
@@ -91,8 +91,8 @@
 		<!-- head -->
 		<div class="div_ph">
 			<p>
-				<a href="photo/photoAction">我的相册</a>>>
-				<a href="photo/queryPhotoListAction?photoAlbumId=<s:property value="photoAlbum.id"/>"><s:property value="photoAlbum.name"/></a>>>
+				<a href="photo/photoActionForManager">我的相册</a>>>
+				<a href="photo/queryPhotoListActionForManager?photoAlbumId=<s:property value="photoAlbum.id"/>"><s:property value="photoAlbum.name"/></a>>>
 				<span class="span_to"><s:property value="curPhoto.name"/></span>
 			</p>
 		</div>
@@ -111,7 +111,7 @@
 							style="border: 1px solid red;"
 						</s:if>
 					>
-						<a href="photo/queryCurPhotoPreAction?curPhoto.id=<s:property value="#photo.id"/>&photoAlbum.id=<s:property value="photoAlbum.id"/>">
+						<a href="photo/queryCurPhotoPreActionForManager?curPhoto.id=<s:property value="#photo.id"/>&photoAlbum.id=<s:property value="photoAlbum.id"/>">
 							<img alt="<s:property value="#photo.name"/>" src="<s:property value="photoAlbum.path"/><s:property value="#photo.name"/>"
 									style="width: 67px; height: 60px;"
 							>

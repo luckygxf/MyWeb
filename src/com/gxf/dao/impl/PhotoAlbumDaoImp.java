@@ -83,4 +83,19 @@ public class PhotoAlbumDaoImp implements PhotoAlbumDao {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.gxf.dao.PhotoAlbumDao#updatePhotoAlbum(com.gxf.beans.PhotoAlbum)
+	 */
+	@Override
+	public void updatePhotoAlbum(PhotoAlbum photoAlbum) {
+		Session session = baseDao.getSession();
+		
+		session.beginTransaction();
+		session.update(photoAlbum);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+
 }

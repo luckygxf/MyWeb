@@ -24,9 +24,9 @@
 		<a href="#"><s:property value="photoAlbum.name"/></a>>>上传相片>><br><br>
 	</div>
 	<form action="photo/uploadPhotoAction?photoAlbum.id=<s:property value="photoAlbum.id"/>" name="form1" method="post" enctype="multipart/form-data">
-		<input type="file" class="btn btn-primary" name="upload" id="upload"/><br>
+		<input type="file" class="btn btn-primary" name="upload" id="upload" accept="image/*"/><br>
 		相片说明<br>
-		<input type="text" name="uploadPhoto.comment"/><br>
+		<input type="text" name="uploadPhoto.comment"/><br><br><br>
 		<input type="button" value="上传相片" class="btn btn-primary" onclick="uploadSubmit()"/>
 	</form>
 </body>

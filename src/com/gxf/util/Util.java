@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 工具类
  * 
@@ -140,4 +142,13 @@ public class Util {
 			fileToDelete.delete();
 		}
 	}
+    
+    /**
+     * 获取项目在服务器中的绝对路径
+     * D:\\apache-tomcat-7.0.59\\webapps\\MyWeb\\
+     * @return
+     */
+    public String getWebProjectInServerRealPath(HttpServletRequest request){
+    	return request.getSession().getServletContext().getRealPath("/"); 
+    }
 }

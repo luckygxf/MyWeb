@@ -35,4 +35,10 @@ public interface PhotoAlbumDao {
 	 * @param id
 	 */
 	public void deletePhotoAlbum(int id);
+	
+	/**
+	 * 更新相册信息
+	 * @param photoAlbum
+	 */
+	public void updatePhotoAlbum(PhotoAlbum photoAlbum);
 }

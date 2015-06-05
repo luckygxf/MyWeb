@@ -1,6 +1,11 @@
 package com.gxf.action;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -181,7 +186,7 @@ public class PhotoAction extends ActionSupport implements ServletRequestAware{
 	public String createPhotoAlbum(){
 		//设置好相册信息
 		photoAlbum.setCreateTime(util.getCurrentTimestamp());
-		String photoAlbumPath = "/" + Util.PROJECT_NAME + "/" + Util.PHOTO_DIRECTION + "/" + photoAlbum.getName();
+		String photoAlbumPath = "/" + Util.PROJECT_NAME + "/" + Util.PHOTO_DIRECTION + "/" + photoAlbum.getName() + "/";
 		photoAlbum.setPath(photoAlbumPath);
 		
 		//创建相册文件夹
@@ -228,11 +233,54 @@ public class PhotoAction extends ActionSupport implements ServletRequestAware{
 		//查询相册信息
 		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
 		
-		//1.写入相片信息到数据库
-		//2.将相片写到文件夹中
+		//1.将相片写到文件夹中
+		//2.写入相片信息到数据库		
+		
+		/*
+		 * 将相片写入到文件夹中
+		 * 1.获取相册在项目中的位置
+		 * */
+		String projectRealPathInServer = util.getWebProjectInServerRealPath(request);
+		String photoAlbumPath = projectRealPathInServer  + "photos"  + File.separator + photoAlbum.getName();						//相册路径
+		
+		//这里使用文件流写入到相册文件夹中
+		String photoPath = photoAlbumPath + File.separator + uploadFileName;
+		File photoFile = new File(photoPath);
+		if(photoFile.exists()){
+			return SUCCESS;
+		}
+		try {
+			photoFile.createNewFile();
+			OutputStream os = new FileOutputStream(photoFile);
+			InputStream is = new FileInputStream(upload);
+			byte buffer[] = new byte[1024];
+			
+			int length = 0;
+			while((length = is.read(buffer)) != -1){
+				os.write(buffer, 0,	length);
+			}
+			
+			os.close();
+			is.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		//将相片信息写入到数据库中
 		uploadPhoto.setUploadTime(util.getCurrentTimestamp());
+		photoAlbum = photoAlbumDao.queryPhotoAlbum(photoAlbum.getId());
+		uploadPhoto.setName(uploadFileName);
+		uploadPhoto.setPhotoAlbum(photoAlbum);
+		
+		//如果以前没有相片，设置默认背景相片
+		if(photoAlbum.getPhotos().size() == 0){
+			String backgroundPhotoPath = photoAlbum.getPath() + uploadPhoto.getName();
+			photoAlbum.setBackgroundPhotoPath(backgroundPhotoPath);
+			photoAlbumDao.updatePhotoAlbum(photoAlbum);
+		}
+		photoDao.addPhoto(uploadPhoto);
 		
 		return SUCCESS;
 	}
